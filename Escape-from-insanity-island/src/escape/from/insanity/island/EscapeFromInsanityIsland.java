@@ -5,8 +5,12 @@
  */
 package escape.from.insanity.island;
 
+import cit260.escapeFromInsanityIsland.model.Game;
+import cit260.escapeFromInsanityIsland.model.Location;
+import cit260.escapeFromInsanityIsland.model.Map;
 import cit260.escapeFromInsanityIsland.model.Player;
-
+import cit260.escapeFromInsanityIsland.model.Character;
+import cit260.escapeFromInsanityIsland.model.Scene;
 /**
  *
  * @author Karla
@@ -23,6 +27,62 @@ public class EscapeFromInsanityIsland {
     playerOne.setName("Karla Cruz");
     String playerInfo = playerOne.toString();
     System.out.println(playerInfo);
+    
+   //game class
+        Game saveGame = new Game();
+        
+    saveGame.setNoPeople("X");
+    String gameInfo = saveGame.toString();
+    System.out.println(gameInfo);
+    
+    
+    //Map class
+        Map rowOne = new Map();
+        Map columnOne = new Map();
+        
+    rowOne.setRowCount(true);
+    String mapInfo = rowOne.toString();
+    System.out.print(mapInfo);
+        
+    columnOne.setRowCount(true);
+    String mapCoordinates = columnOne.toString();
+    System.out.print(mapCoordinates);
+        
+    //Location class
+        Location coordinatesX = new Location();
+    
+   coordinatesX.setCoordinates(true);
+   String coordinatesInfo = coordinatesX.toString();
+   System.out.print(true);
+   
+  
+   Character characterName = new Character();
+   Character characterLocation = new Character();
+   Character characterLife = new Character();
+   
+   characterName.setName("snake");
+   String characterNameInfo = characterName.toString();
+   System.out.println(characterNameInfo);
+   
+   characterLocation.setLocation(true);
+   String characterLocationInfo = characterLocation.toString();
+   System.out.print(characterLocationInfo);
+   
+   characterLife.setLife(2);
+   String characterLifeInfo = characterLife.toString();
+   System.out.print(characterLifeInfo);
+   
+    // Scene class
+    
+        Scene nameOne = new Scene();
+        
+    nameOne.setName("Beach");
+    String nameInfo = nameOne.toString();
+    System.out.println(nameInfo);
+    
+    //still need to code scene sub-classes.
+         
+        
     }
     
 }
