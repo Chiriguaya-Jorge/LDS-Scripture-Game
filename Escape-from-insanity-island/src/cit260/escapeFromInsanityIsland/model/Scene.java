@@ -15,7 +15,7 @@ import java.util.Objects;
 public class Scene implements Serializable  {
     private String name;
 
-    public name() {
+    public Scene() {
     }
 
     public String getName() {
@@ -56,9 +56,4 @@ public class Scene implements Serializable  {
         return "Scene{" + "name=" + name + '}';
     }
 
-    
-    
-    
-    
-    
 }
