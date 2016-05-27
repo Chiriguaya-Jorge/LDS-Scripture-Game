@@ -10,6 +10,7 @@ import cit260.escapeFromInsanityIsland.model.Location;
 import cit260.escapeFromInsanityIsland.model.Map;
 import cit260.escapeFromInsanityIsland.model.Player;
 import cit260.escapeFromInsanityIsland.model.Character;
+import cit260.escapeFromInsanityIsland.model.Inventory;
 import cit260.escapeFromInsanityIsland.model.Scene;
 /**
  *
@@ -81,8 +82,14 @@ public class EscapeFromInsanityIsland {
     System.out.println(nameInfo);
     
     //still need to code scene sub-classes.
-         
+    
+        Inventory inventoryList;
+        inventoryList = new Inventory();
         
+    inventoryList.setInventoryList(true);
+    String inventoryInfo = inventoryList.toString();
+    System.out.print(true);
+     
     }
     
 }
