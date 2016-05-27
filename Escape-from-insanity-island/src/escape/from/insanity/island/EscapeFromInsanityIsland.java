@@ -60,6 +60,7 @@ public class EscapeFromInsanityIsland {
    Character characterName = new Character();
    Character characterLocation = new Character();
    Character characterLife = new Character();
+   Character beastDamage = new Character();
    
    characterName.setName("snake");
    String characterNameInfo = characterName.toString();
@@ -69,9 +70,13 @@ public class EscapeFromInsanityIsland {
    String characterLocationInfo = characterLocation.toString();
    System.out.print(characterLocationInfo);
    
-   characterLife.setLife(2);
+   characterLife.setCharacterlife(0);
    String characterLifeInfo = characterLife.toString();
-   System.out.print(characterLifeInfo);
+   System.out.print(0);
+   
+   beastDamage.setBeastDamage(30);
+   String beastDamageInfo = beastDamage.toString();
+   System.out.print(0);
    
     // Scene class
     

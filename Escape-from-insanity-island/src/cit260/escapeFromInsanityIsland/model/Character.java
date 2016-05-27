@@ -15,14 +15,14 @@ import java.util.Objects;
 public class Character implements Serializable{
     
     private String name;
-    
-   private double life;
+    private double characterLife;
     private boolean location;
-
+    private double beastDamage;
+    
     public Character() {
     }
     
-
+    
     public String getName() {
         return name;
     }
@@ -31,12 +31,12 @@ public class Character implements Serializable{
         this.name = name;
     }
 
-    public double getLife() {
-        return life;
+    public double getCharacterlife() {
+        return characterLife;
     }
 
-    public void setLife(double life) {
-        this.life = life;
+    public void setCharacterlife(double characterLife) {
+        this.characterLife = characterLife;
     }
 
     public boolean isLocation() {
@@ -47,12 +47,20 @@ public class Character implements Serializable{
         this.location = location;
     }
 
+    public double getBeastDamage() {
+        return beastDamage;
+    }
+
+    public void setBeastDamage(double beastDamage) {
+        this.beastDamage = beastDamage;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 53 * hash + Objects.hashCode(this.name);
-        hash = 53 * hash + (int) (Double.doubleToLongBits(this.life) ^ (Double.doubleToLongBits(this.life) >>> 32));
-        hash = 53 * hash + (this.location ? 1 : 0);
+        int hash = 7;
+        hash = 79 * hash + Objects.hashCode(this.name);
+        hash = 79 * hash + (int) (Double.doubleToLongBits(this.characterLife) ^ (Double.doubleToLongBits(this.characterLife) >>> 32));
+        hash = 79 * hash + (int) (Double.doubleToLongBits(this.beastDamage) ^ (Double.doubleToLongBits(this.beastDamage) >>> 32));
         return hash;
     }
 
@@ -68,10 +76,13 @@ public class Character implements Serializable{
             return false;
         }
         final Character other = (Character) obj;
-        if (Double.doubleToLongBits(this.life) != Double.doubleToLongBits(other.life)) {
+        if (Double.doubleToLongBits(this.characterLife) != Double.doubleToLongBits(other.characterLife)) {
             return false;
         }
         if (this.location != other.location) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.beastDamage) != Double.doubleToLongBits(other.beastDamage)) {
             return false;
         }
         if (!Objects.equals(this.name, other.name)) {
@@ -82,14 +93,25 @@ public class Character implements Serializable{
 
     @Override
     public String toString() {
-        return "Character{" + "name=" + name + ", life=" + life + ", location=" + location + '}';
+        return "Character{" + "name=" + name + ", characterlife=" + characterLife + ", location=" + location + ", beastDamage=" + beastDamage + '}';
     }
 
- 
+    public void setLife(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setCharacterBeastDamage(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setBeastDamage() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setCharacterLife(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
+     
     
-   
-    
-   
-    
-}
+   }
