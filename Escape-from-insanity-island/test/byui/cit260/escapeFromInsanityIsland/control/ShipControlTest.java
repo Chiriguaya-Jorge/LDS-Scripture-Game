@@ -162,6 +162,38 @@ public class ShipControlTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+
+    /**
+     * Test of calcSawTime method, of class ShipControl.
+     */
+    @Test
+    public void testCalcSawTime() {
+        System.out.println("calcSawTime");
+        double sawTime = 0.0;
+        double timesUsed = 0.0;
+        ShipControl instance = new ShipControl();
+        double expResult = 0.0;
+        double result = instance.calcSawTime(sawTime, timesUsed);
+        assertEquals(expResult, result, 0.0);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of calcHammerTime method, of class ShipControl.
+     */
+    @Test
+    public void testCalcHammerTime() {
+        System.out.println("calcHammerTime");
+        double hammerTime = 0.0;
+        double timesUsed = 0.0;
+        ShipControl instance = new ShipControl();
+        double expResult = 0.0;
+        double result = instance.calcHammerTime(hammerTime, timesUsed);
+        assertEquals(expResult, result, 0.0);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
     
        
 }

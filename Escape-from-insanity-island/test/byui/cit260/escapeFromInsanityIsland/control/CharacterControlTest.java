@@ -18,7 +18,7 @@ public class CharacterControlTest {
     }
 
     @Test
-    public void testSomeMethod() {
+    public void testCalcCharacterLife() {
        
         System.out.println("calcCharaterLife");
         //****test case1

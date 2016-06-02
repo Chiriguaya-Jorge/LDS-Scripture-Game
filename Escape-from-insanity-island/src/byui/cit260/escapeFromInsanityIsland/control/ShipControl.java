@@ -50,4 +50,11 @@ public class ShipControl {
   double calcPartialHammerTime = hammerTime * timesUsed;			
 				
    return calcPartialHammerTime;}
-}
+    
+    public double buildShipTime (double calcAxeTime, double calcSawTime, 
+            double calcHammerTime ){
+        double shipTime = calcAxeTime + calcSawTime + calcHammerTime;
+             
+             return shipTime; }
+    
+    }
