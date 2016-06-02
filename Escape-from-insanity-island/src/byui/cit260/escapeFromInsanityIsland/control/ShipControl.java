@@ -29,7 +29,7 @@ public class ShipControl {
          return 0;
      }        
 
-     if (timesUsed < 1 || timesUsed > 16) {
+     if (timesUsed < 1 || timesUsed > 15) {
          return 0;				
      }
 				
@@ -39,11 +39,11 @@ public class ShipControl {
     }
    
     public double calcHammerTime (double hammerTime, double timesUsed){ 
-     if (hammerTime < 1 || hammerTime >2) {
+     if (hammerTime < 1 || hammerTime > 1) {
          return 0;
      }        
 
-     if (timesUsed < 1 || timesUsed > 21) {
+     if (timesUsed < 1 || timesUsed > 20) {
          return 0;				
      }
 				
