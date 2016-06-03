@@ -40,7 +40,7 @@ public class ShipControlTest {
         // compares expected return value agains actual valie
         assertEquals(expResult, result, 0.0001);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
         
        
         //****CASE 2****
@@ -59,7 +59,7 @@ public class ShipControlTest {
         // compares expected return value agains actual valie
         assertEquals(expResult, result, 0.0);
         // TODO review the generated/* test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       
         
            /******TEST CASE  3***
             * ***
@@ -78,7 +78,7 @@ public class ShipControlTest {
         // compares expected return value agains actual valie
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
         
         /****** TEST CASE 4****
          * 
@@ -98,7 +98,7 @@ public class ShipControlTest {
         // compares expected return value agains actual valie
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       
         
         
         /****** TEST CASE 5 ****
@@ -118,7 +118,7 @@ public class ShipControlTest {
         // compares expected return value agains actual valie
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       
         
         
         
@@ -139,7 +139,7 @@ public class ShipControlTest {
         // compares expected return value agains actual valie
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       
         
         
         
@@ -160,39 +160,170 @@ public class ShipControlTest {
         // compares expected return value agains actual valie
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
-
+// *********SAW TIME******
     /**
      * Test of calcSawTime method, of class ShipControl.
      */
     @Test
     public void testCalcSawTime() {
         System.out.println("calcSawTime");
-        double sawTime = 0.0;
-        double timesUsed = 0.0;
+        System.out.println("\tTest case 1");
+        
+        double sawTime = 2.0;
+        double timesUsed = 8.0;
+        double expResult = 16.0;
+        
         ShipControl instance = new ShipControl();
-        double expResult = 0.0;
+       
         double result = instance.calcSawTime(sawTime, timesUsed);
-        assertEquals(expResult, result, 0.0);
+        assertEquals(expResult, result, 0.0001);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       
+        
+         System.out.println("\tTest case 2");
+        
+        sawTime = 2.0;
+        timesUsed = 0.0;
+        expResult = 0.0;
+                  
+       result = instance.calcSawTime(sawTime, timesUsed);
+        assertEquals(expResult, result, 0.0001);
+        // TODO review the generated test code and
+        
+        
+    System.out.println("\tTest case 3");
+        
+        sawTime = 0.0;
+        timesUsed = 4.0;
+        expResult = 0.0;
+                  
+       result = instance.calcSawTime(sawTime, timesUsed);
+        assertEquals(expResult, result, 0.0001);
+        // TODO review the generated test code and
+        
+        
+      System.out.println("\tTest case 4");
+        
+        sawTime = 4.0;
+        timesUsed = 6.0;
+        expResult = 0.0;
+                  
+       result = instance.calcSawTime(sawTime, timesUsed);
+        assertEquals(expResult, result, 0.0001);
+        // TODO review the generated test code and
+        
+        
+      System.out.println("\tTest case 5");
+        
+        sawTime = 1.0;
+        timesUsed = 12.0;
+        expResult = 12.0;
+                  
+       result = instance.calcSawTime(sawTime, timesUsed);
+        assertEquals(expResult, result, 0.0001);
+        // TODO review the generated test code and
+        
+        
+     System.out.println("\tTest case 6");
+        
+        sawTime = 1.0;
+        timesUsed = 1.0;
+        expResult = 1.0;
+                  
+       result = instance.calcSawTime(sawTime, timesUsed);
+        assertEquals(expResult, result, 0.0001);
+        // TODO review the generated test code and
+        
+        
+      System.out.println("\tTest case 7");
+        
+        sawTime = 3.0;
+        timesUsed = 15.0;
+        expResult = 45.0;
+                  
+       result = instance.calcSawTime(sawTime, timesUsed);
+        assertEquals(expResult, result, 0.0001);
+        // TODO review the generated test code and
     }
 
+    
+    // ******HAMMER TIME*****
     /**
      * Test of calcHammerTime method, of class ShipControl.
      */
     @Test
     public void testCalcHammerTime() {
         System.out.println("calcHammerTime");
-        double hammerTime = 0.0;
-        double timesUsed = 0.0;
+         System.out.println("\tTest case 1");
+         
+        double hammerTime = 1.0;
+        double timesUsed = 13.0;
+         double expResult = 13.0;
         ShipControl instance = new ShipControl();
-        double expResult = 0.0;
+        
         double result = instance.calcHammerTime(hammerTime, timesUsed);
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
+        
+              
+         
+      System.out.println("\tTest case 2");
+         
+        hammerTime = 1.0;
+        timesUsed = 0.0;
+        expResult = 0.0;
+        
+        result = instance.calcHammerTime(hammerTime, timesUsed);
+        assertEquals(expResult, result, 0.0001);
+        // TODO review the generated test code and remove the default call to fail.
+     
+        
+      System.out.println("\tTest case 3");
+         
+        hammerTime = 0.0;
+        timesUsed = 6.0;
+        expResult = 0.0;
+        
+        result = instance.calcHammerTime(hammerTime, timesUsed);
+        assertEquals(expResult, result, 0.0001);
+        // TODO review the generated test code and remove the default call to fail.
+        
+      
+     System.out.println("\tTest case 4");
+         
+        hammerTime = 2.0;
+        timesUsed = 10.0;
+        expResult = 0.0;
+        
+        result = instance.calcHammerTime(hammerTime, timesUsed);
+        assertEquals(expResult, result, 0.0001);
+        // TODO review the generated test code and remove the default call to fail.
+        
+        
+    System.out.println("\tTest case 5");
+         
+        hammerTime = 1.0;
+        timesUsed = 3.0;
+        expResult = 3.0;
+        
+        result = instance.calcHammerTime(hammerTime, timesUsed);
+        assertEquals(expResult, result, 0.0001);
+        // TODO review the generated test code and remove the default call to fail.
+        
+        
+        
+   System.out.println("\tTest case 6");
+         
+        hammerTime = 1.0;
+        timesUsed = 17.0;
+        expResult = 17.0;
+        
+        result = instance.calcHammerTime(hammerTime, timesUsed);
+        assertEquals(expResult, result, 0.0001);
+        // TODO review the generated test code and remove the default call to fail.
     }
     
        

@@ -38,7 +38,7 @@ public class CharacterControlTest {
         // compares expected return value agains actual valie
         assertEquals(expResult, result, 0.0001);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
        
     
     
@@ -57,7 +57,7 @@ public class CharacterControlTest {
         // compares expected return value agains actual valie
         assertEquals(expResult, result, 0.0001);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
         
         
          System.out.println("\tTest case 3");
@@ -75,7 +75,7 @@ public class CharacterControlTest {
         // compares expected return value agains actual valie
         assertEquals(expResult, result, 0.0001);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
         
         
         
@@ -85,7 +85,7 @@ public class CharacterControlTest {
         characterDamage = 4.0;
         numberOfHits = 11.0;
         
-        expResult = 0.0; //expected ouput returned value
+        expResult = 44.0; //expected ouput returned value
         // create instance of shipControl calss
        
         //call function to run test
@@ -94,7 +94,7 @@ public class CharacterControlTest {
         // compares expected return value agains actual valie
         assertEquals(expResult, result, 0.0001);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       
         
         
         System.out.println("\tTest case 5");
@@ -112,6 +112,6 @@ public class CharacterControlTest {
         // compares expected return value agains actual valie
         assertEquals(expResult, result, 0.0001);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 }
