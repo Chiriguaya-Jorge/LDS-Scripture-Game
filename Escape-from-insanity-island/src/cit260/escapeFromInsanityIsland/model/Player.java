@@ -56,6 +56,13 @@ public class Player implements Serializable{
     public String toString() {
         return "Player{" + "name=" + name + '}';
     }
+
+    public void setName(Object name) {
+        System.out.println("\n TEST TEST TEST ");
+        
+    }
+
+   
     
     
     
