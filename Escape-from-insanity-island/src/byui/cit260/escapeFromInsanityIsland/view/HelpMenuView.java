@@ -19,7 +19,7 @@ public class HelpMenuView {
      
     public HelpMenuView(){
         
-        this.promptMessage = "\nPlese select an option: ";
+        this.promptMessage = "\n Help Menu: Please select an option: ";
         
         this.menu = "\nQ - Quit"
                 + "\n"
@@ -37,7 +37,7 @@ public class HelpMenuView {
                 }
     
     
-   public void displayMainMenuView() {
+   public void displayHelpMenuView() {
         boolean done = false; //set flag to not done
         do {
             //promp for and gets players name

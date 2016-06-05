@@ -102,14 +102,25 @@ public class MainMenuView {
            }
 
     private void startExistingGame() {
-        System.out.println("*** startExistinGame function called"); 
+         GameControl.startExistingGame(EscapeFromInsanityIsland.getPlayer());
+       
+       //Displays game menu
+       GameMenuView gameMenu = new GameMenuView();
+       gameMenu.displayMenu();
     }
 
     private void displayHelpMenu() {
-        System.out.println("*** displayHelpMenu function called"); 
+     
+   HelpMenuView helpMenuView = new HelpMenuView();
+     
+    helpMenuView.displayHelpMenuView();
     }
 
     private void saveGame() {
-        System.out.println("*** saveCurrentGame function called"); 
+        GameControl.saveGame(EscapeFromInsanityIsland.getPlayer());
+       
+       //Displays game menu
+       GameMenuView gameMenu = new GameMenuView();
+       gameMenu.displayMenu();
     }
 }
