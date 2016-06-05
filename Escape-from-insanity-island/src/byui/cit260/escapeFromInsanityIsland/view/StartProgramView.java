@@ -30,7 +30,7 @@ public class StartProgramView {
        "\n\n*********************************************"
        + "\n* Welcome to Insanity Island, you woke up in this     *"
        + "\n* island but you can't remember anything but your     *"
-       + "\n* name, now you need to fins a way to escape.         *"
+       + "\n* name, now you need to find a way to escape.         *"
        + "\n*                                                     *"
        + "\n* You have to explore the island and look for items   *"
        + "\n* to create tools and build a ship to get out of here *"

@@ -5,6 +5,8 @@
  */
 package byui.cit260.escapeFromInsanityIsland.view;
 
+import byui.cit260.escapeFromInsanityIsland.control.GameControl;
+import escape.from.insanity.island.EscapeFromInsanityIsland;
 import java.util.Scanner;
 
 /**
@@ -92,8 +94,12 @@ public class MainMenuView {
         }
 
     private void StartNewGame() {
-       System.out.println("*** startNewGame function called"); 
-    }
+       GameControl.createNewGame(EscapeFromInsanityIsland.getPlayer());//CREATES NEW GAME
+       
+       //Displays game menu
+       GameMenuView gameMenu = new GameMenuView();
+       gameMenu.displayMenu();
+           }
 
     private void startExistingGame() {
         System.out.println("*** startExistinGame function called"); 
