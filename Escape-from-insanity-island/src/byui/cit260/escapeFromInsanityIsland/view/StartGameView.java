@@ -5,37 +5,34 @@
  */
 package byui.cit260.escapeFromInsanityIsland.view;
 
-import byui.cit260.escapeFromInsanityIsland.control.GameControl;
-import escape.from.insanity.island.EscapeFromInsanityIsland;
 import java.util.Scanner;
 
 /**
  *
  * @author Karla
  */
-public class MainMenuView {
-    
+public class StartGameView {
     private String menu;
     private String promptMessage ;
     
-    public MainMenuView(){
+    public StartGameView(){
         
-        this.promptMessage = "\nPlese select a menu option: ";
+        this.promptMessage = "\nPlese select your mood from the menu: ";
         
         this.menu = "\nQ - Quit"
                 + "\n"
                 + "\n----------------------------------"
-                + "\n Main Menu                        "
+                + "\n How are you feeling?"
                 + "\n ---------------------------------"
-                + "\nN - Start new game"
-                + "\nC - Continue existing game"
-                + "\nS - Save game"
-                + "\nH - Help"
+                + "\nC - Confused"
+                + "\nA - Angry"
+                + "\nW - Worried"
+                + "\nH - Happy"
                 + "\n----------------------------------";
                 }
     
     
-   public void displayMainMenuView() {
+   public void displayStartGameView() {
         boolean done = false; //set flag to not done
         do {
             //promp for and gets players name
@@ -73,17 +70,17 @@ public class MainMenuView {
        menuOption = menuOption.toUpperCase(); //converts to upper case
        
        switch (menuOption){
-           case "N": //CReates and starts new game, player prompted to select mood
-               this.startNewGame();
+           case "C": //confused
+               this.confused();
                
-           case "C": //continue existing game
-               this.continueExistingGame();
+           case "A": //angry
+               this.angry();
                
-           case "H": // HELP MENU
-               this.displayHelpMenu();
+           case "W": // worried
+               this.worried();
             
-           case "S": //SAVE CURRENT GAME
-               this.saveGame();
+           case "H": //happy
+               this.happy();
                break;
               
            default:
@@ -93,37 +90,24 @@ public class MainMenuView {
        return false;
         }
 
-    private void startNewGame() {
-       GameControl.startNewGame(EscapeFromInsanityIsland.getPlayer());//CREATES NEW GAME
-       
-       //Displays game menu
-       GameMenuView gameMenu = new GameMenuView();
-       gameMenu.displayMenu();
-           }
-
-    private void continueExistingGame() {
-         GameControl.continueExistingGame(EscapeFromInsanityIsland.getPlayer());
-       
-       //Displays game menu
-       GameMenuView gameMenu = new GameMenuView();
-       gameMenu.displayMenu();
+    private void confused() {
+        // int value = ????  
+        System.out.println("\n***confused() stub function called");
     }
 
-    private void displayHelpMenu() {
-        GameControl.displayHelpMenu(EscapeFromInsanityIsland.getPlayer());
-     
-   HelpMenuView helpMenuView = new HelpMenuView();
-     
-    helpMenuView.displayHelpMenuView();
+    private void angry() {
+        System.out.println("\n** angry() stub function called");
     }
 
-    private void saveGame() {
-        GameControl.saveGame(EscapeFromInsanityIsland.getPlayer());
-       
-       //Displays game menu
-       GameMenuView gameMenu = new GameMenuView();
-       gameMenu.displayMenu();
+    private void worried() {
+        System.out.println("\n** Invalid() stub function called");
     }
 
+    private void happy() {
+        System.out.println("\n*** happy() stub function called");
+    }
+
+   
+    
     
 }

@@ -127,7 +127,7 @@ public class HelpMenuView {
     }
 
     private void move() {
-        System.out.println("*** startExistinGame function called"); 
+        System.out.println("*** how to move?"); 
     }
 
     private void toolsAvailable() {

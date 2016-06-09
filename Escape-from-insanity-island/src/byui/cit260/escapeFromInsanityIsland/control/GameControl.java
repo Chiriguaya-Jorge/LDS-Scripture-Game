@@ -7,6 +7,8 @@ package byui.cit260.escapeFromInsanityIsland.control;
 
 
 
+import byui.cit260.escapeFromInsanityIsland.view.HelpMenuView;
+import byui.cit260.escapeFromInsanityIsland.view.StartGameView;
 import cit260.escapeFromInsanityIsland.model.Player;
 import escape.from.insanity.island.EscapeFromInsanityIsland;
 
@@ -32,18 +34,28 @@ public class GameControl {
         return player;
         }
 
-    public static void createNewGame(Player player) {
-        System.out.println("\n*** createNewGame stub function called");
+    public static void startNewGame(Player player) {
+        StartGameView startGameView = new StartGameView();
+     
+    startGameView.displayStartGameView();
     }
 
-    public static void startExistingGame(Player player) {
+    public static void continueExistingGame(Player player) {
         System.out.println("*** startExistingGame stub function called"); 
     }
 
     public static void saveGame(Player player) {
-       System.out.println("*** saveGame stub function called"); 
-    }
        
+    }
+
+    public static void displayHelpMenu(Player player) {
+            HelpMenuView helpMenuView = new HelpMenuView();
+     
+            helpMenuView.displayHelpMenuView();
+    }
+
+           
     
+   
     
 }
