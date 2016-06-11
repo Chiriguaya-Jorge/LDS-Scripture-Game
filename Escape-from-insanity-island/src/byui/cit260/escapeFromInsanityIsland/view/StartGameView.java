@@ -14,10 +14,21 @@ import java.util.Scanner;
 public class StartGameView {
     private String menu;
     private String promptMessage ;
+    private static final String MENU = "\n"
+                + "\n----------------------------------"
+                + "\n How are you feeling?"
+                + "\n ---------------------------------"
+                + "\nC - Confused"
+                + "\nA - Angry"
+                + "\nW - Worried"
+                + "\nH - Happy"
+                + "\n----------------------------------";
+            
     
     public StartGameView(){
+        System.out.println(MENU);
         
-        this.promptMessage = "\nPlese select your mood from the menu: ";
+        this.promptMessage = "\nPlese select your mood to start the game: ";
         
         this.menu = "\nQ - Quit"
                 + "\n"
@@ -92,19 +103,23 @@ public class StartGameView {
 
     private void confused() {
         // int value = ????  
-        System.out.println("\n***confused() stub function called");
+        System.out.println(
+           "The plyer is confused as steps on a large thick, sturdy stick");
     }
 
     private void angry() {
-        System.out.println("\n** angry() stub function called");
+        System.out.println(
+            "The player angrily walks around and steps on a trap");
     }
 
     private void worried() {
-        System.out.println("\n** Invalid() stub function called");
+        System.out.println(
+        "Player is worried, walks around for objects and finds a pocket knife");
     }
 
     private void happy() {
-        System.out.println("\n*** happy() stub function called");
+        System.out.println(
+       "Player is so happy to be lost, misses the knife and grabs a coconut");
     }
 
    

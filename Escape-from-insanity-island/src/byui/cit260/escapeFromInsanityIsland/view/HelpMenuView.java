@@ -14,10 +14,21 @@ import java.util.Scanner;
 public class HelpMenuView {
      private String menu;
      private String promptMessage;
-     
-    
+     private static final String MENU = "\n"
+                + "\n----------------------------------"
+                + "\n Help Menu                        "
+                + "\n ---------------------------------"
+                + "\nG - What is the goal of the game?"
+                + "\nM - How to move"
+                + "\nT - Tools available to construct"
+                + "\nC - Construct tools"
+                + "\nV - View map"
+                + "\nA - Avoid traps/beast"
+                + "\nQ - Quit game"
+                + "\n----------------------------------";
      
     public HelpMenuView(){
+        System.out.println(MENU);
         
         this.promptMessage = "\n Help Menu: Please select an option: ";
         

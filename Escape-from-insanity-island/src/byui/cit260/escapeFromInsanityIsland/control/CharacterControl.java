@@ -4,23 +4,24 @@
  * and open the template in the editor.
  */
 package byui.cit260.escapeFromInsanityIsland.control;
-
 /**
  *
  * @author Karla
  */
 public class CharacterControl {
-    public double calcCharacterLife (double characterDamage, double numberOfHits){ 
-     if (numberOfHits < 1 || numberOfHits > 20)  {
-         return 0;
-     }        
-
-     if (characterDamage < 1 || characterDamage > 11) {
-         return 0;				
-     }
-				
-  double totalDamage= characterDamage * numberOfHits;			
-				
-   return totalDamage;}
     
+   public double calcCharacterLife (double characterDamage, double numberOfHits){
+       if (numberOfHits < 1 || numberOfHits > 20){
+           return 0;}
+       
+       if (characterDamage < 1 || characterDamage > 11){
+           return 0;
+       }
+       double totalDamage = characterDamage * numberOfHits;
+       return totalDamage;
+   }
 }
+ 
+
+     
+    

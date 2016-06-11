@@ -46,15 +46,7 @@ public class GameControl {
 
     public static void saveGame(Player player) {
        
-    }
-
-    public static void displayHelpMenu(Player player) {
-            HelpMenuView helpMenuView = new HelpMenuView();
-     
-            helpMenuView.displayHelpMenuView();
-    }
-
-           
+    }      
     
    
     

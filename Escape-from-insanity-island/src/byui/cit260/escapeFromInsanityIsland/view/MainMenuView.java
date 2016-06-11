@@ -17,9 +17,18 @@ public class MainMenuView {
     
     private String menu;
     private String promptMessage ;
-    
+    private static final String MENU = "\n"
+                + "\n----------------------------------"
+                + "\n Main Menu                        "
+                + "\n ---------------------------------"
+                + "\nN - Start new game"
+                + "\nC - Continue existing game"
+                + "\nS - Save game"
+                + "\nH - Help"
+                + "\n----------------------------------";
     public MainMenuView(){
         
+        System.out.println(MENU);
         this.promptMessage = "\nPlese select a menu option: ";
         
         this.menu = "\nQ - Quit"
@@ -102,17 +111,15 @@ public class MainMenuView {
            }
 
     private void continueExistingGame() {
-         GameControl.continueExistingGame(EscapeFromInsanityIsland.getPlayer());
+        GameControl.continueExistingGame(EscapeFromInsanityIsland.getPlayer());
        
        //Displays game menu
-       GameMenuView gameMenu = new GameMenuView();
-       gameMenu.displayMenu();
+       GamePlayMenuView gamePlayMenuView = new GamePlayMenuView();
+       gamePlayMenuView.displayGamePlayMenuView();
     }
 
     private void displayHelpMenu() {
-        GameControl.displayHelpMenu(EscapeFromInsanityIsland.getPlayer());
-     
-   HelpMenuView helpMenuView = new HelpMenuView();
+    HelpMenuView helpMenuView = new HelpMenuView();
      
     helpMenuView.displayHelpMenuView();
     }

@@ -9,9 +9,10 @@ package byui.cit260.escapeFromInsanityIsland.view;
  *
  * @author Karla
  */
-public class GameMenuView {
+class GameMenuView {
 
     void displayMenu() {
-        System.out.println("\n*** displayMenu stub function called**");
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
 }

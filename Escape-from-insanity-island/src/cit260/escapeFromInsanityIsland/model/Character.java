@@ -19,6 +19,7 @@ public class Character implements Serializable{
     private boolean location;
     private double beastDamage;
     
+    
     public Character() {
     }
     
