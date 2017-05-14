@@ -19,6 +19,8 @@ public class GameControl implements Serializable {
     private double saveGame;
     private double retriveGame;
     private double createNewPlayer;
+    
+    
 
     public double getStartNewGame() {
         return startNewGame;

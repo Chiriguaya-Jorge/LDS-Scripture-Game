@@ -6,6 +6,7 @@
 package byui.cit260.ldsScriptureGame.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  *
@@ -16,6 +17,45 @@ public class MeanToTravelControl implements Serializable{
     //class instance variables
     private String loadMeanToTravel;
     private String boardMeanToTravel;
+
+    public MeanToTravelControl() {
+    }
+
+    @Override
+    public String toString() {
+        return "MeanToTravelControl{" + "loadMeanToTravel=" + loadMeanToTravel + ", boardMeanToTravel=" + boardMeanToTravel + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 67 * hash + Objects.hashCode(this.loadMeanToTravel);
+        hash = 67 * hash + Objects.hashCode(this.boardMeanToTravel);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final MeanToTravelControl other = (MeanToTravelControl) obj;
+        if (!Objects.equals(this.loadMeanToTravel, other.loadMeanToTravel)) {
+            return false;
+        }
+        if (!Objects.equals(this.boardMeanToTravel, other.boardMeanToTravel)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 
     public String getLoadMeanToTravel() {
         return loadMeanToTravel;
