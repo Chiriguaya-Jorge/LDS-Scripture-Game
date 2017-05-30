@@ -4,11 +4,6 @@
  * and open the template in the editor.
  */
 package byui.cit260.ldsScriptureGame.model;
-import java.io.Serializable
-/**
- *
- * @author Reinaldo
- */
 import java.util.Objects;/**
  *
  * @author Reinaldo
