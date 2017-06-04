@@ -6,6 +6,7 @@
 package byui.cit260.ldsScriptureGame.control;
 
 import byui.cit260.ldsScriptureGame.model.Player;
+import lds.scripture.game.team.LDSScriptureGameTeam;
 
 /**
  *
@@ -19,7 +20,7 @@ public class GameControl {
             return null;
         }
         
-        Player playerOne = new Player();
+        Player player = new Player();
         player.setName(playersName);
         
         LDSScriptureGameTeam.setPlayer(player); //save the player
