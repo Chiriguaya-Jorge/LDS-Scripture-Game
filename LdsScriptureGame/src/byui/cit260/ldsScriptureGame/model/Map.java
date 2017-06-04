@@ -17,6 +17,45 @@ public class Map implements Serializable {
     private double rowCount;
     private double columnCount;
 
+    public Map() {
+    }
+
+    @Override
+    public String toString() {
+        return "Map{" + "rowCount=" + rowCount + ", columnCount=" + columnCount + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + (int) (Double.doubleToLongBits(this.rowCount) ^ (Double.doubleToLongBits(this.rowCount) >>> 32));
+        hash = 53 * hash + (int) (Double.doubleToLongBits(this.columnCount) ^ (Double.doubleToLongBits(this.columnCount) >>> 32));
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Map other = (Map) obj;
+        if (Double.doubleToLongBits(this.rowCount) != Double.doubleToLongBits(other.rowCount)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.columnCount) != Double.doubleToLongBits(other.columnCount)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
+
     public double getRowCount() {
         return rowCount;
     }
