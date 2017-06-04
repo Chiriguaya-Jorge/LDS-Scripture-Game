@@ -13,6 +13,10 @@ import lds.scripture.game.team.LDSScriptureGameTeam;
  * @author dnp
  */
 public class GameControl {
+    
+    public static void createNewGame(Player player) {
+        System.out.println("\n*** CreateNewGame stub function called ***")
+    }
 
     public static Player createPlayer(String playersName) {
         
