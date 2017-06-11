@@ -5,7 +5,6 @@
  */
 package byui.cit260.ldsScriptureGame.view;
 
-import byui.cit260.ldsScriptureGame.control.GameControl;
 import java.util.Scanner;
 
 /**
@@ -55,9 +54,7 @@ public class BagCreationView {
         return null;
     }
 
-    private boolean doAction(String menuOption) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
     public boolean doAction(String choice) {
         
         choice = choice.toUpperCase();
@@ -79,10 +76,7 @@ public class BagCreationView {
 
     private void itemBagCreation(){
     
-        GameControl.createNewGame(LDSScriptureGame.getPlayer());
-        
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
+       System.out.println("");
     }
     
     private void waterBagCreation(){
