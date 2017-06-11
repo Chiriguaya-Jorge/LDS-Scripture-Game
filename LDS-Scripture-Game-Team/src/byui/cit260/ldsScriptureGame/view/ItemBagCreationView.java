@@ -4,30 +4,17 @@
  * and open the template in the editor.
  */
 package byui.cit260.ldsScriptureGame.view;
-
-import java.util.Scanner;
 import byui.cit260.ldsScriptureGame.control.GameControl;
 import lds.scripture.game.team.LDSScriptureGameTeam;
-
+import byui.cit260.ldsScriptureGame.model.Player;
+import java.util.Scanner;
 /**
  *
- * @author hp
+ * @author Reinaldo
  */
-public class MainMenuView {
-    
-    private void startExistingGame(){
-        System.out.println("*** Loading ***");
-    }
-    
-    private void saveGame() {
-        System.out.println("*** Saved ***");
-    }
-    
-    private void displayHelpMenu() {
-        System.out.println("*** This is the help Menu ***");
-    }
-
-    public void displayMainMenuView() {
+public class ItemBagCreationView {
+  
+    public void displayItemBagCreationView() {
 
        boolean  done = false;
         do {
@@ -41,44 +28,39 @@ public class MainMenuView {
         } while (!done);
         
     }
-   
     private String menu;
     
-    public MainMenuView() {
+    public ItemBagCreationView() {
         this.menu = "\n"
-                  + "\n--------------------------------" 
-                  + "\n| Main Menu                    |" 
-                  + "\n--------------------------------" 
-                  + "\nN - Start new game" 
-                  + "\nG - Continue" 
-                  + "\nH - How to play the game" 
-                  + "\nS - Save Game" 
-                  + "\nQ - Quit" 
-                  + "\n--------------------------------";
+                  + "\n------------------------------------------" 
+                  + "\n| Item Bag Creation                      |" 
+                  + "\n------------------------------------------" 
+                  + "\n The largest bag that can be created has  " 
+                  + "\n a volume of 40. Anything larger would    " 
+                  + "\n be too big for a person to carry long    " 
+                  + "\n distances.In addition, the value of each "
+                  + "\n parameter should not be greater than 5   "
+                  + "\n------------------------------------------" 
+                  + "\nQ - Quit                                  " 
+                  + "\n------------------------------------------";
     }
- 
-        private String getMenuOption() {
-        Scanner keyboard = new Scanner(System.in);
-        String value = "";
-        boolean valid = false;
-        
-        while (!valid){
-            System.out.println("\n" + this.menu);
-            
-            value = keyboard.nextLine();
-            value = value.trim();
-            
-            if (value.length()< 1) {
-                System.out.println("Invalid value: value can not be blank");
-                continue;
-            }
-            break;
-        }
-        
-        return value;
+
+    private String getMenuOption() {
+    System.out.println();
+    //prompt to enter the users name
+    System.out.println("\nPlease enter the value");
+
+    // create an input file for the console
+    Scanner inFile;
+    inFile = new Scanner(System.in);
+
+    // read the value of the next line typed in the console
+    String name = inFile.nextLine();
+        return null;
     }
+
     
-       public boolean doAction(String choice) {
+    public boolean doAction(String choice) {
         
         choice = choice.toUpperCase();
         
@@ -103,7 +85,6 @@ public class MainMenuView {
         return false;
 }
 
- 
     private void startNewGame(){
     
         GameControl.createNewGame(LDSScriptureGameTeam.getPlayer());
@@ -111,4 +92,17 @@ public class MainMenuView {
         GameMenuView gameMenu = new GameMenuView();
         gameMenu.displayMenu();
     }
+    
+    private void startExistingGame(){
+        System.out.println("");
+    }
+    
+    private void saveGame() {
+        System.out.println("");
+    }
+    
+    private void displayHelpMenu() {
+        System.out.println("");
+    }
+
 }
