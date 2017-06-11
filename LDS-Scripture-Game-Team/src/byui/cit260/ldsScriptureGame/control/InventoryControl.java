@@ -33,4 +33,16 @@ public class InventoryControl {
         }
     }
     
+    public double calcBagsNeeded(double noBags, double leatherMinVol) {
+        System.out.println("calcBagsNeeded");
+       
+        if (noBags < 0 || noBags > 10) {
+            return -1;
+        }
+        
+        leatherMinVol = 40;
+        
+        double cuantity = (noBags * leatherMinVol);
+        return cuantity;
+    }    
 }

@@ -81,7 +81,7 @@ public class StartProgramView {
             value = keyboard.nextLine();
             value = value.trim();
             
-            if (value.length()<1) {
+            if (value.length()< 1) {
                 System.out.println("Invalid value: value can not be blank");
                 continue;
             }
@@ -105,21 +105,22 @@ public class StartProgramView {
             System.out.println("\nError creating the player.");
         return false;    
         }
-        this.displayNextView();
+        this.displayNextView(player);
        
         return true;
     }
-   
-    private void displayNextView() {
+    
+private void displayNextView(Player player) {
         System.out.println("\n================================================"
                           + "\nWelcome to the game" + player.getName()
                           + "\n We hope you have fun while learning!"
                           + "\n==============================================="
                           );
         
-        MainMenuView mainMenuView = new MainMenuView()
+        MainMenuView mainMenuView = new MainMenuView();
                 
         mainMenuView.displayMainMenuView();
         
-    }
+    }  
+
 }

@@ -7,13 +7,34 @@ package byui.cit260.ldsScriptureGame.view;
 
 import java.util.Scanner;
 import byui.cit260.ldsScriptureGame.control.GameControl;
+import lds.scripture.game.team.LDSScriptureGameTeam;
 
 /**
  *
  * @author hp
  */
-class MainMenuView {
+public class MainMenuView {
     
+      private void startNewGame(){
+    
+        GameControl.createNewGame(LDSScriptureGameTeam.getPlayer());
+        
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.displayMenu();
+    }
+    
+    private void startExistingGame(){
+        System.out.println("");
+    }
+    
+    private void saveGame() {
+        System.out.println("");
+    }
+    
+    private void displayHelpMenu() {
+        System.out.println("");
+    }
+
     public void displayMainMenuView() {
 
         boolean done = false;
@@ -28,6 +49,21 @@ class MainMenuView {
         } while (!done);
         
     }
+    
+        private String getMenuOption() {
+    System.out.println();
+    //prompt to enter the users name
+    System.out.println("\nPlease enter the value");
+
+    // create an input file for the console
+    Scanner inFile;
+    inFile = new Scanner(System.in);
+
+    // read the value of the next line typed in the console
+    String name = inFile.nextLine();
+        return null;
+    }
+        
     private String menu;
     
     public MainMenuView() {
@@ -43,23 +79,7 @@ class MainMenuView {
                   + "\n--------------------------------";
     }
 
-    private String getMenuOption() {
-    System.out.println();
-    //prompt to enter the users name
-    System.out.println("\nPlease enter the value");
-
-    // create an input file for the console
-    Scanner inFile;
-    inFile = new Scanner(System.in);
-
-    // read the value of the next line typed in the console
-    String name = inFile.nextLine();
-        return null;
-    }
-
-    private boolean doAction(String menuOption) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
     public boolean doAction(String choice) {
         
         choice = choice.toUpperCase();
@@ -84,24 +104,5 @@ class MainMenuView {
         
         return false;
 }
-
-    private void startNewGame(){
-    
-        GameControl.createNewGame(LDSScriptureGame.getPlayer());
-        
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
-    }
-    
-    private void startExistingGame(){
-        System.out.println("")
-    }
-    
-    private void saveGame() {
-        System.out.println("");
-    }
-    
-    private void displayHelpMenu() {
-        System.out.println("")
-    }
+ 
 }

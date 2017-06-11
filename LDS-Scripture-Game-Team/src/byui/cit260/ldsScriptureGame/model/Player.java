@@ -4,39 +4,33 @@
  * and open the template in the editor.
  */
 package byui.cit260.ldsScriptureGame.model;
-import java.util.Objects;/**
+
+import java.io.Serializable;
+import java.util.Objects;
+
+/**
  *
- * @author Reinaldo
-  private double bestTime;
+ * @author hp
  */
-public class Player implements serializable {
-  private String name;
+public class Player implements Serializable{
+    
+     // class instance variables
+    private String name;
     private double bestTime;
 
     public Player() {
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public double getBestTime() {
-        return bestTime;
-    }
-
-    public void setBestTime(double bestTime) {
-        this.bestTime = bestTime;
+    @Override
+    public String toString() {
+        return "Player{" + "name=" + name + ", bestTime=" + bestTime + '}';
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 11 * hash + Objects.hashCode(this.name);
-        hash = 11 * hash + (int) (Double.doubleToLongBits(this.bestTime) ^ (Double.doubleToLongBits(this.bestTime) >>> 32));
+        int hash = 7;
+        hash = 31 * hash + Objects.hashCode(this.name);
+        hash = 31 * hash + (int) (Double.doubleToLongBits(this.bestTime) ^ (Double.doubleToLongBits(this.bestTime) >>> 32));
         return hash;
     }
 
@@ -55,14 +49,27 @@ public class Player implements serializable {
         if (Double.doubleToLongBits(this.bestTime) != Double.doubleToLongBits(other.bestTime)) {
             return false;
         }
-        return Objects.equals(this.name, other.name);
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        return true;
     }
 
-    @Override
-    public String toString() {
-      String bestTime = null;
-        return "Player{" + "name=" + name + ", bestTime=" + bestTime + '}';
+    public String getName() {
+        return name;
     }
-  
-  
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getBestTime() {
+        return bestTime;
+    }
+
+    public void setBestTime(double bestTime) {
+        this.bestTime = bestTime;
+    }
+   
+    
 }

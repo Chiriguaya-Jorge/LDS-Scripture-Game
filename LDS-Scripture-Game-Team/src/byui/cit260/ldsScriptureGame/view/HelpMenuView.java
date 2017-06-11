@@ -163,11 +163,3 @@ public class HelpMenuView {
     
     
 }
-  
-/**
- *
- * @author dnp
- */
-public class HelpMenuView {
-    
-}

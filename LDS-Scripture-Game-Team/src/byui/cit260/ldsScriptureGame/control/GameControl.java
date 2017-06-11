@@ -10,42 +10,26 @@ import lds.scripture.game.team.LDSScriptureGameTeam;
 
 /**
  *
- * @author dnp
+ * @author hp
  */
 public class GameControl {
-    
-    public static void createNewGame(Player player) {
-        System.out.println("\n*** CreateNewGame stub function called ***")
-    }
 
-    public static Player createPlayer(String playersName) {
-        
-        if (playersName == null){
+    public static Player createPlayer(String name) {
+
+        if (name == null) {
             return null;
         }
         
         Player player = new Player();
-        player.setName(playersName);
+        player.setName(name);
         
-        LDSScriptureGameTeam.setPlayer(player); //save the player
+        LDSScriptureGameTeam.setPlayer(player);
         
-        return player;
-        }
-
-    public static void startNewGame(Player player) {
-        StartGameView startGameView = new StartGameView();
-     
-    startGameView.displayStartGameView();
+        return new Player();
     }
 
-    public static void continueExistingGame(Player player) {
-        System.out.println("*** startExistingGame stub function called"); 
+    public static void createNewGame(Player player) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    public static void saveGame(Player player) {
-       
-    }      
     
-   
-     
 }
