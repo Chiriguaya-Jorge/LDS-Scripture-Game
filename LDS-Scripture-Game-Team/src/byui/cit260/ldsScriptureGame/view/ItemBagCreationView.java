@@ -4,17 +4,16 @@
  * and open the template in the editor.
  */
 package byui.cit260.ldsScriptureGame.view;
-
-import java.util.Scanner;
 import byui.cit260.ldsScriptureGame.control.GameControl;
-
+import byui.cit260.ldsScriptureGame.model.Player;
+import java.util.Scanner;
 /**
  *
- * @author hp
+ * @author Reinaldo
  */
-public class MainMenuView {
-    
-    public void displayMainMenuView() {
+public class ItemBagCreationView {
+  
+    public void displayItemBagCreationView() {
 
        boolean  done = false;
         do {
@@ -30,17 +29,19 @@ public class MainMenuView {
     }
     private String menu;
     
-    public MainMenuView() {
+    public ItemBagCreationView() {
         this.menu = "\n"
-                  + "\n--------------------------------" 
-                  + "\n| Main Menu                    |" 
-                  + "\n--------------------------------" 
-                  + "\nN - Start new game" 
-                  + "\nG - Continue" 
-                  + "\nH - How to play the game" 
-                  + "\nS - Save Game" 
-                  + "\nQ - Quit" 
-                  + "\n--------------------------------";
+                  + "\n------------------------------------------" 
+                  + "\n| Item Bag Creation                      |" 
+                  + "\n------------------------------------------" 
+                  + "\n The largest bag that can be created has  " 
+                  + "\n a volume of 40. Anything larger would    " 
+                  + "\n be too big for a person to carry long    " 
+                  + "\n distances.In addition, the value of each "
+                  + "\n parameter should not be greater than 5   "
+                  + "\n------------------------------------------" 
+                  + "\nQ - Quit                                  " 
+                  + "\n------------------------------------------";
     }
 
     private String getMenuOption() {
@@ -57,7 +58,10 @@ public class MainMenuView {
         return null;
     }
 
-       public boolean doAction(String choice) {
+    private boolean doAction(String menuOption) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    public boolean doAction(String choice) {
         
         choice = choice.toUpperCase();
         
@@ -101,4 +105,5 @@ public class MainMenuView {
     private void displayHelpMenu() {
         System.out.println("");
     }
+
 }

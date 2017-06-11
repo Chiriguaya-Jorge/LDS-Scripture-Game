@@ -112,13 +112,13 @@ public class StartProgramView {
    
     private void displayNextView() {
         System.out.println("\n================================================"
-                          + "\nWelcome to the game" + player.getName()
+                          + "\nWelcome to the game" + players.getlayersName() 
                           + "\n We hope you have fun while learning!"
                           + "\n==============================================="
                           );
         
-        MainMenuView mainMenuView = new MainMenuView()
-                
+        MainMenuView mainMenuView = new MainMenuView();
+        
         mainMenuView.displayMainMenuView();
         
     }
