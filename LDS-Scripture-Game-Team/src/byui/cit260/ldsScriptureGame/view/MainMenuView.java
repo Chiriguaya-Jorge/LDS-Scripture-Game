@@ -14,9 +14,9 @@ import lds.scripture.game.team.LDSScriptureGameTeam;
  * @author hp
  */
 public class MainMenuView {
-    
+
       private void startNewGame(){
-    
+          
         GameControl.createNewGame(LDSScriptureGameTeam.getPlayer());
         
         GameMenuView gameMenu = new GameMenuView();
@@ -24,15 +24,15 @@ public class MainMenuView {
     }
     
     private void startExistingGame(){
-        System.out.println("");
+        System.out.println("*** Loading ***");
     }
     
     private void saveGame() {
-        System.out.println("");
+        System.out.println("*** Saved ***");
     }
     
     private void displayHelpMenu() {
-        System.out.println("");
+        System.out.println("*** This is the help Menu ***");
     }
 
     public void displayMainMenuView() {
@@ -49,21 +49,7 @@ public class MainMenuView {
         } while (!done);
         
     }
-    
-        private String getMenuOption() {
-    System.out.println();
-    //prompt to enter the users name
-    System.out.println("\nPlease enter the value");
-
-    // create an input file for the console
-    Scanner inFile;
-    inFile = new Scanner(System.in);
-
-    // read the value of the next line typed in the console
-    String name = inFile.nextLine();
-        return null;
-    }
-        
+   
     private String menu;
     
     public MainMenuView() {
@@ -78,7 +64,27 @@ public class MainMenuView {
                   + "\nQ - Quit" 
                   + "\n--------------------------------";
     }
-
+ 
+        private String getMenuOption() {
+        Scanner keyboard = new Scanner(System.in);
+        String value = "";
+        boolean valid = false;
+        
+        while (!valid){
+            System.out.println("\n" + this.menu);
+            
+            value = keyboard.nextLine();
+            value = value.trim();
+            
+            if (value.length()< 1) {
+                System.out.println("Invalid value: value can not be blank");
+                continue;
+            }
+            break;
+        }
+        
+        return value;
+    }
     
     public boolean doAction(String choice) {
         
