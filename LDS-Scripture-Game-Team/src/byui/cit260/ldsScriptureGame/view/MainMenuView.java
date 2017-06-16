@@ -108,6 +108,6 @@ public class MainMenuView extends View {
         GameControl.createNewGame(LDSScriptureGameTeam.getPlayer());
         
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.display();
+        gameMenu.displayMenu();
     }
 }
