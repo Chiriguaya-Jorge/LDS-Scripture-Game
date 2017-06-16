@@ -11,7 +11,7 @@ import lds.scripture.game.team.LDSScriptureGameTeam;
 
 /**
  *
- * @author hp
+ * @author Jorge Chiriguaya
  */
 public class MainMenuView {
     
@@ -32,6 +32,7 @@ public class MainMenuView {
        boolean  done = false;
         do {
             // prompt for and get players name
+            System.out.println("\n" + this.menu);
             String menuOption = this.getMenuOption();
             if (menuOption.toUpperCase().equals("Q")) // user wants to quit
                 return; // exit the game
@@ -39,7 +40,7 @@ public class MainMenuView {
             // do the requested action and display the next view
             done = this.doAction(menuOption);
         } while (!done);
-        
+
     }
    
     private String menu;
@@ -62,9 +63,7 @@ public class MainMenuView {
         String value = "";
         boolean valid = false;
         
-        while (!valid){
-            System.out.println("\n" + this.menu);
-            
+        while (!valid){            
             value = keyboard.nextLine();
             value = value.trim();
             
@@ -106,9 +105,5 @@ public class MainMenuView {
  
     private void startNewGame(){
     
-        GameControl.createNewGame(LDSScriptureGameTeam.getPlayer());
-        
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
     }
 }

@@ -18,7 +18,7 @@ public class LDSScriptureGameTeam {
      * @param args the command line arguments
      */
     private static Game currentGame = null;
-    private static Player player = null;
+    private static Player player;
     
     public static void main(String[] args) {
        StartProgramView startProgramView = new StartProgramView();
