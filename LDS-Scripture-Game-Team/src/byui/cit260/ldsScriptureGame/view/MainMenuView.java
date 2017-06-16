@@ -5,7 +5,6 @@
  */
 package byui.cit260.ldsScriptureGame.view;
 
-import java.util.Scanner;
 import byui.cit260.ldsScriptureGame.control.GameControl;
 import lds.scripture.game.team.LDSScriptureGameTeam;
 
@@ -13,7 +12,7 @@ import lds.scripture.game.team.LDSScriptureGameTeam;
  *
  * @author hp
  */
-public class MainMenuView {
+public class MainMenuView extends View {
     
     private void startExistingGame(){
         System.out.println("*** Loading ***");
@@ -27,25 +26,11 @@ public class MainMenuView {
         System.out.println("*** This is the help Menu ***");
     }
 
-    public void displayMainMenuView() {
-
-       boolean  done = false;
-        do {
-            // prompt for and get players name
-            String menuOption = this.getMenuOption();
-            if (menuOption.toUpperCase().equals("Q")) // user wants to quit
-                return; // exit the game
-            
-            // do the requested action and display the next view
-            done = this.doAction(menuOption);
-        } while (!done);
-        
-    }
    
-    private String menu;
+   
     
     public MainMenuView() {
-        this.menu = "\n"
+            super( "\n"
                   + "\n--------------------------------" 
                   + "\n| Main Menu                    |" 
                   + "\n--------------------------------" 
@@ -54,30 +39,10 @@ public class MainMenuView {
                   + "\nH - How to play the game" 
                   + "\nS - Save Game" 
                   + "\nQ - Quit" 
-                  + "\n--------------------------------";
-    }
- 
-        private String getMenuOption() {
-        Scanner keyboard = new Scanner(System.in);
-        String value = "";
-        boolean valid = false;
-        
-        while (!valid){
-            System.out.println("\n" + this.menu);
-            
-            value = keyboard.nextLine();
-            value = value.trim();
-            
-            if (value.length()< 1) {
-                System.out.println("Invalid value: value can not be blank");
-                continue;
-            }
-            break;
-        }
-        
-        return value;
+                  + "\n--------------------------------");
     }
     
+    @Override
        public boolean doAction(String choice) {
         
         choice = choice.toUpperCase();
@@ -109,6 +74,6 @@ public class MainMenuView {
         GameControl.createNewGame(LDSScriptureGameTeam.getPlayer());
         
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
+        gameMenu.display();
     }
 }
