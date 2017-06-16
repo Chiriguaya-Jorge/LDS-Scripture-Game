@@ -5,15 +5,15 @@
  */
 package byui.cit260.ldsScriptureGame.view;
 
-import java.util.Scanner;
 import byui.cit260.ldsScriptureGame.control.GameControl;
+import java.util.Scanner;
 import lds.scripture.game.team.LDSScriptureGameTeam;
 
 /**
  *
  * @author Jorge Chiriguaya
  */
-public class MainMenuView {
+public class MainMenuView extends View {
     
     private void startExistingGame(){
         System.out.println("*** Loading ***");
@@ -32,7 +32,6 @@ public class MainMenuView {
        boolean  done = false;
         do {
             // prompt for and get players name
-            System.out.println("\n" + this.menu);
             String menuOption = this.getMenuOption();
             if (menuOption.toUpperCase().equals("Q")) // user wants to quit
                 return; // exit the game
@@ -43,10 +42,10 @@ public class MainMenuView {
 
     }
    
-    private String menu;
+   
     
     public MainMenuView() {
-        this.menu = "\n"
+            super( "\n"
                   + "\n--------------------------------" 
                   + "\n| Main Menu                    |" 
                   + "\n--------------------------------" 
@@ -55,7 +54,7 @@ public class MainMenuView {
                   + "\nH - How to play the game" 
                   + "\nS - Save Game" 
                   + "\nQ - Quit" 
-                  + "\n--------------------------------";
+                  + "\n--------------------------------");
     }
  
         private String getMenuOption() {
@@ -77,6 +76,7 @@ public class MainMenuView {
         return value;
     }
     
+    @Override
        public boolean doAction(String choice) {
         
         choice = choice.toUpperCase();
@@ -105,5 +105,9 @@ public class MainMenuView {
  
     private void startNewGame(){
     
+        GameControl.createNewGame(LDSScriptureGameTeam.getPlayer());
+        
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.displayMenu();
     }
 }
