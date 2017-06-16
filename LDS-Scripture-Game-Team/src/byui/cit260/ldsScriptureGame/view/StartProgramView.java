@@ -118,7 +118,7 @@ private void displayNextView(Player player) {
                           );
         
         MainMenuView mainMenuView = new MainMenuView();      
-        mainMenuView.displayMainMenuView();
+        mainMenuView.display();
         
     }  
 
