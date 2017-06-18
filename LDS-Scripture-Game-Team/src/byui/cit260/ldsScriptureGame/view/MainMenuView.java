@@ -26,24 +26,7 @@ public class MainMenuView extends View {
     private void displayHelpMenu() {
         System.out.println("*** This is the help Menu ***");
     }
-
-    public void displayMainMenuView() {
-
-       boolean  done = false;
-        do {
-            // prompt for and get players name
-            String menuOption = this.getMenuOption();
-            if (menuOption.toUpperCase().equals("Q")) // user wants to quit
-                return; // exit the game
-            
-            // do the requested action and display the next view
-            done = this.doAction(menuOption);
-        } while (!done);
-
-    }
-   
-   
-    
+ 
     public MainMenuView() {
             super( "\n"
                   + "\n--------------------------------" 
@@ -57,31 +40,12 @@ public class MainMenuView extends View {
                   + "\n--------------------------------");
     }
  
-        private String getMenuOption() {
-        Scanner keyboard = new Scanner(System.in);
-        String value = "";
-        boolean valid = false;
-        
-        while (!valid){            
-            value = keyboard.nextLine();
-            value = value.trim();
-            
-            if (value.length()< 1) {
-                System.out.println("Invalid value: value can not be blank");
-                continue;
-            }
-            break;
-        }
-        
-        return value;
-    }
-    
     @Override
-       public boolean doAction(String choice) {
+       public boolean doAction(String value) {
         
-        choice = choice.toUpperCase();
+        value = value.toUpperCase();
         
-        switch (choice) {
+        switch (value) {
             case "N": 
                 this.startNewGame();
                 break;
@@ -107,7 +71,7 @@ public class MainMenuView extends View {
     
         GameControl.createNewGame(LDSScriptureGameTeam.getPlayer());
         
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
+        MainMenuView mainMenuView = new MainMenuView();
+        mainMenuView.display();
     }
 }

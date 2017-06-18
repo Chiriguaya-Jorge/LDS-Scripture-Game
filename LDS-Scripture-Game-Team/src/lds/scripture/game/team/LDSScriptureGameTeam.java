@@ -7,7 +7,7 @@ package lds.scripture.game.team;
 //loading
 import byui.cit260.ldsScriptureGame.model.Player;
 import byui.cit260.ldsScriptureGame.view.StartProgramView;
-
+import byui.cit260.ldsScriptureGame.model.Game;
 /**
  *
  * @author Reinaldo
@@ -18,7 +18,9 @@ public class LDSScriptureGameTeam {
      * @param args the command line arguments
      */
     private static Game currentGame = null;
-    private static Player player;
+    private static Player player = null;
+    
+    
     
     public static void main(String[] args) {
        StartProgramView startProgramView = new StartProgramView();

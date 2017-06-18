@@ -14,20 +14,20 @@ import java.util.Scanner;
  *
  * @author hp
  */
-public class MoveCharacterView {
+public class MoveCharacterView extends View {
 
     public MoveCharacterView() {
         System.out.println("\n"
-                           + "\n---------------------------------------------"
-                           + "\n| Select character to move                       |"
-                           + "\n---------------------------------------------"
+                           + "\n-------------------------------------------"
+                           + "\n| Select character to move                |"
+                           + "\n-------------------------------------------"
                            + "\nA - Laman"
                            + "\nE - Lemuel"
                            + "\nN - Nephi"
                            + "\nM - Sam"
                            + "\nZ - Zoram"
                            + "\nQ - Quit"
-                           + "\n---------------------------------------------");
+                           + "\n------------------------------------------");
     }
 
     
@@ -77,7 +77,7 @@ public class MoveCharacterView {
             int returnValue = MapControl.moveCharacterToLocation(character, coordinates);
             if (returnValue < 0) {
                 System.out.println("\nERROR" + character + 
-                                   " counld not be moved to location: " + 
+                                   " could not be moved to location: " + 
                                    coordinates.x + ", " + coordinates.y);
             }
 
@@ -113,27 +113,4 @@ public class MoveCharacterView {
 
     }
     
-    public String getInput() {
-
-        Scanner keyboard = new Scanner(System.in);
-        boolean valid = false;
-        String selection = null;
-
-        // while a valid name has not been retrieved
-        while (!valid) {
-
-            // get the value entered from the keyboard
-            selection = keyboard.nextLine();
-            selection = selection.trim();
-
-            if (selection.length() < 1) { // blank value entered
-                System.out.println("\n*** Invalid selection *** Try again");
-                continue;
-            }
-            
-            break;
-        }
-
-        return selection; // return the name        
-    }
 }

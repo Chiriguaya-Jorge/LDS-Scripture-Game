@@ -14,7 +14,7 @@ import java.util.ArrayList;
  *
  * @author Jorge Chiriguaya
  */
-public class LocationView {
+public class LocationView extends View {
     
     public LocationView() {
         System.out.println("\n"

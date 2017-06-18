@@ -72,7 +72,7 @@ public class StartProgramView {
 
     private String getPlayersName() {
         Scanner keyboard = new Scanner(System.in);
-        String value = "";
+        String value = null;
         boolean valid = false;
         
         while (!valid){
@@ -107,6 +107,9 @@ public class StartProgramView {
         }
         this.displayNextView(player);
        
+        MainMenuView mainMenuView = new MainMenuView();      
+        mainMenuView.display();
+        
         return true;
     }
     
@@ -116,10 +119,7 @@ private void displayNextView(Player player) {
                           + "\n We hope you have fun while learning!"
                           + "\n==============================================="
                           );
-        
-        MainMenuView mainMenuView = new MainMenuView();      
-        mainMenuView.display();
-        
+     
     }  
 
 }

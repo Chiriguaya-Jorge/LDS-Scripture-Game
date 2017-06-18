@@ -19,7 +19,11 @@ public class Player implements Serializable{
     private double bestTime;
 
     public Player() {
-        
+    }
+    
+    public Player(String name, double bestTime) {
+        this.name = name;
+        this.bestTime = bestTime;
     }
 
     @Override

@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author Reinaldo
  */
-public class BagCreationView {
+public class BagCreationView extends View {
     
         public void displayBagCreationView() {
 
@@ -76,11 +76,11 @@ public class BagCreationView {
 
     private void itemBagCreation(){
     
-       System.out.println("");
+       System.out.println("*** ITEM BAGS CREATED ***");
     }
     
     private void waterBagCreation(){
-        System.out.println("");
+        System.out.println("*** WATER BAG CREATED ***");
     }
     
   

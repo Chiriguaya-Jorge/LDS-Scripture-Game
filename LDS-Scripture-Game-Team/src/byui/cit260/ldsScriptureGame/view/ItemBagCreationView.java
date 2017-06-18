@@ -89,8 +89,8 @@ public class ItemBagCreationView {
     
         GameControl.createNewGame(LDSScriptureGameTeam.getPlayer());
         
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
+        MainMenuView mainMenuView = new MainMenuView();
+        mainMenuView.display();
     }
     
     private void startExistingGame(){
