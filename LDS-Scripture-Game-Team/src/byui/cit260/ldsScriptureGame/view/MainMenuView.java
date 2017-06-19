@@ -6,7 +6,6 @@
 package byui.cit260.ldsScriptureGame.view;
 
 import byui.cit260.ldsScriptureGame.control.GameControl;
-import java.util.Scanner;
 import lds.scripture.game.team.LDSScriptureGameTeam;
 
 /**
