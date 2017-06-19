@@ -22,6 +22,7 @@ public class LocationView extends View {
     }
 
 
+    @Override
     public boolean doAction(String choice) {
 
             Point coordinates = this.getCoordinates(choice); // get the row and column
