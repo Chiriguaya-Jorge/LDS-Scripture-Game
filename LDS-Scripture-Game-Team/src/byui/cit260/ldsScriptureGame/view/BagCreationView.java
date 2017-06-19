@@ -13,48 +13,26 @@ import java.util.Scanner;
  */
 public class BagCreationView extends View {
     
-        public void displayBagCreationView() {
-
-       boolean  done = false;
-        do {
-            // prompt for and get players name
-            String menuOption = this.getMenuOption();
-            if (menuOption.toUpperCase().equals("Q")) // user wants to quit
-                return; // exit the game
-            
-            // do the requested action and display the next view
-            done = this.doAction(menuOption);
-        } while (!done);
         
-    }
-    private String menu;
+        
+    
+    
     
     public BagCreationView() {
-        this.menu = "\n"
+            super ("\n"
                   + "\n--------------------------------" 
                   + "\n| Bag Creation Menu            |" 
                   + "\n--------------------------------" 
                   + "\nI - Item Bag" 
                   + "\nW - Water Bag" 
                   + "\nQ - Quit" 
-                  + "\n--------------------------------";
+                  + "\n--------------------------------");
     }
 
-    private String getMenuOption() {
-    System.out.println();
-    //prompt to enter the users name
-    System.out.println("\nPlease enter the value");
-
-    // create an input file for the console
-    Scanner inFile;
-    inFile = new Scanner(System.in);
-
-    // read the value of the next line typed in the console
-    String name = inFile.nextLine();
-        return null;
-    }
+   
 
     
+        @Override
     public boolean doAction(String choice) {
         
         choice = choice.toUpperCase();
