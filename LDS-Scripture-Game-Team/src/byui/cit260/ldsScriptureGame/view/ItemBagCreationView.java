@@ -4,34 +4,21 @@
  * and open the template in the editor.
  */
 package byui.cit260.ldsScriptureGame.view;
-import byui.cit260.ldsScriptureGame.control.GameControl;
-import lds.scripture.game.team.LDSScriptureGameTeam;
-import byui.cit260.ldsScriptureGame.model.Player;
+import byui.cit260.ldsScriptureGame.control.InventoryControl;
 import java.util.Scanner;
 /**
  *
  * @author Reinaldo
  */
-public class ItemBagCreationView {
+public class ItemBagCreationView extends View{
   
-    public void displayItemBagCreationView() {
-
-       boolean  done = false;
-        do {
-            // prompt for and get players name
-            String menuOption = this.getMenuOption();
-            if (menuOption.toUpperCase().equals("Q")) // user wants to quit
-                return; // exit the game
-            
-            // do the requested action and display the next view
-            done = this.doAction(menuOption);
-        } while (!done);
-        
-    }
-    private String menu;
+  private String height;
+  private String width;
+  private String depth; 
+    
     
     public ItemBagCreationView() {
-        this.menu = "\n"
+             super("\n"
                   + "\n------------------------------------------" 
                   + "\n| Item Bag Creation                      |" 
                   + "\n------------------------------------------" 
@@ -42,67 +29,19 @@ public class ItemBagCreationView {
                   + "\n parameter should not be greater than 5   "
                   + "\n------------------------------------------" 
                   + "\nQ - Quit                                  " 
-                  + "\n------------------------------------------";
+                  + "\n------------------------------------------");
+             
+             this.height="\nPlease enter height of bag:";
+             this.width="\nPlease enter width of bag:";
+             this.depth="\nPlease enter depth of bag:";
+             
     }
 
-    private String getMenuOption() {
-    System.out.println();
-    //prompt to enter the users name
-    System.out.println("\nPlease enter the value");
-
-    // create an input file for the console
-    Scanner inFile;
-    inFile = new Scanner(System.in);
-
-    // read the value of the next line typed in the console
-    String name = inFile.nextLine();
-        return null;
-    }
-
-    
+       
+    @Override
     public boolean doAction(String choice) {
         
-        choice = choice.toUpperCase();
-        
-        switch (choice) {
-            case "N": 
-                this.startNewGame();
-                break;
-            case "G":
-                this.startExistingGame();
-                break;
-            case "H":
-                this.displayHelpMenu();
-                break;
-            case "S":
-                this.saveGame();
-                break;
-            default:
-                System.out.println("\n*** Invalid selection *** Try again");
-                break;
-    }
-        
-        return false;
-}
-
-    private void startNewGame(){
-    
-        GameControl.createNewGame(LDSScriptureGameTeam.getPlayer());
-        
-        MainMenuView mainMenuView = new MainMenuView();
-        mainMenuView.display();
-    }
-    
-    private void startExistingGame(){
-        System.out.println("");
-    }
-    
-    private void saveGame() {
-        System.out.println("");
-    }
-    
-    private void displayHelpMenu() {
-        System.out.println("");
+         calcItemBagVolume itBag = new calcItemBagVolume(double height, double width, double depth); 
     }
 
 }
