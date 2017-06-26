@@ -8,6 +8,7 @@ package byui.cit260.ldsScriptureGame.control;
 /**
  *
  * @author Team Work
+ * modified by Jorge Chiriguaya
  */
 public class Constants {
     public final static int NUMBER_OF_INVENTORY_ITEMS = 14;

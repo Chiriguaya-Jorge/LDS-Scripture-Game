@@ -8,6 +8,7 @@ package byui.cit260.ldsScriptureGame.model;
 /**
  *
  * @author Team Work
+ * modified by Jorge Chiriguaya
  */
 public enum SceneType {
     start,

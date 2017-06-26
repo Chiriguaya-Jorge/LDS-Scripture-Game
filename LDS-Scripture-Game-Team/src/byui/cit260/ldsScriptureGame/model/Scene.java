@@ -8,9 +8,11 @@ import java.io.Serializable;
 
 /**
  *
- * @author hp
+ * @author Jorge Chiriguaya
  */
 public class Scene implements Serializable {
+    
+    private SceneGroup sceneGroup;
     private String description;
     private String mapSymbol;
     private double travelTime;
@@ -19,6 +21,22 @@ public class Scene implements Serializable {
     public Scene() {
     }
 
+    public Scene(SceneGroup sceneGroup, String description, String mapSymbol, double travelTime, boolean blocked) {
+        this.sceneGroup = sceneGroup;
+        this.description = description;
+        this.mapSymbol = mapSymbol;
+        this.travelTime = travelTime;
+        this.blocked = blocked;
+    }
+
+    public SceneGroup getSceneGroup() {
+        return sceneGroup;
+    }
+
+    public void setSceneGroup(SceneGroup sceneGroup) {
+        this.sceneGroup = sceneGroup;
+    }
+    
     public String getDescription() {
         return description;
     }
