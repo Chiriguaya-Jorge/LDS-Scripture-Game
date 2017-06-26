@@ -5,19 +5,19 @@
  */
 package byui.cit260.ldsScriptureGame.view;
 import byui.cit260.ldsScriptureGame.control.InventoryControl;
-import java.util.Scanner;
+
 /**
  *
  * @author Reinaldo
  */
-public class ItemBagCreationView extends View{
+public class ItemBagCreationView extends View {
   
-  private String height;
-  private String width;
-  private String depth; 
+  public String height;
+  public String width;
+  public String depth; 
     
     
-    public ItemBagCreationView() {
+    public ItemBagCreationView()  {
              super("\n"
                   + "\n------------------------------------------" 
                   + "\n| Item Bag Creation                      |" 
@@ -41,7 +41,9 @@ public class ItemBagCreationView extends View{
     @Override
     public boolean doAction(String choice) {
         
-         calcItemBagVolume itBag = new calcItemBagVolume(double height, double width, double depth); 
+         InventoryControl calcItemBagVolume = new InventoryControl(); 
+      return false;
+         
     }
 
 }

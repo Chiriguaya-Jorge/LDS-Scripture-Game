@@ -12,7 +12,7 @@ import byui.cit260.ldsScriptureGame.model.Location;
 
 /**
  *
- * @author Jorge Chiriguaya
+ * @author Team Work
  */
 public enum Character implements Serializable {
     

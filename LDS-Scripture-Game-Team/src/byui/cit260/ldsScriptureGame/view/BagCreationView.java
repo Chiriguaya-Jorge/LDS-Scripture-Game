@@ -53,8 +53,8 @@ public class BagCreationView extends View {
 }
 
     private void itemBagCreation(){
-    
-       System.out.println("*** ITEM BAGS CREATED ***");
+        ItemBagCreationView itemBagCreationView = new ItemBagCreationView();
+        itemBagCreationView.display();;
     }
     
     private void waterBagCreation(){

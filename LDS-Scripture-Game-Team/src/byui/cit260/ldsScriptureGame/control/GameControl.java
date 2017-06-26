@@ -12,11 +12,12 @@ import byui.cit260.ldsScriptureGame.model.Item;
 import byui.cit260.ldsScriptureGame.model.InventoryItem;
 import byui.cit260.ldsScriptureGame.model.Location;
 import byui.cit260.ldsScriptureGame.model.Map;
-import java.awt.Point;
+import byui.cit260.ldsScriptureGame.model.Scene;
+import byui.cit260.ldsScriptureGame.model.SceneType;
 
 /**
  *
- * @author Jorge Chiriguaya
+ * @author Team Work
  */
 public class GameControl {
 
@@ -31,12 +32,27 @@ public class GameControl {
     }
 
     public static void createNewGame(Player player) {
-        System.out.println("*** Loading ***");
+        Game game = new Game(); // create new game
+       LDSScriptureGameTeam.setCurrentGame(game); // save in LDSScriptureGameTeam
+       
+       game.setPlayer(player); // save player in game
+       
+       // create the inventory list and save in the game
+       InventoryItem[] inventoryList = GameControl.createInventoryList();
+       game.setInventory(inventoryList);
+        
+       Map map = MapControl.createMap(); // create and initialize new map
+       game.setMap(map); // save map in game
+
+       // move actors to starting position in the map
+              
+       MapControl.moveCharactersToStartingLocation(map);
+
     }
+    
     public static InventoryItem[] createInventoryList() {
         // created array(list) of inventory items    
-        InventoryItem[] inventory = 
-            new InventoryItem[Constants.NUMBER_OF_INVENTORY_ITEMS];
+        InventoryItem[] inventory = new InventoryItem[Constants.NUMBER_OF_INVENTORY_ITEMS];
         
         InventoryItem leather = new InventoryItem();
         leather.setDescription("Leather");
@@ -89,19 +105,19 @@ public class GameControl {
         InventoryItem gold = new InventoryItem();
         gold.setDescription("Gold");
         gold.setQuantityInStock(0);
-        gold.setRequiredAmount(2);
+        gold.setRequiredAmount(20);
         inventory[Item.gold.ordinal()] = gold;
 
         InventoryItem silver = new InventoryItem();
         silver.setDescription("Silver");
         silver.setQuantityInStock(0);
-        silver.setRequiredAmount(3);
+        silver.setRequiredAmount(30);
         inventory[Item.silver.ordinal()] = silver;
         
         InventoryItem bow = new InventoryItem();
         bow.setDescription("Bow");
         bow.setQuantityInStock(0);
-        bow.setRequiredAmount(1);
+        bow.setRequiredAmount(5);
         inventory[Item.bow.ordinal()] = bow;
         
         InventoryItem arrow = new InventoryItem();
@@ -116,7 +132,12 @@ public class GameControl {
         sling.setRequiredAmount(1);
         inventory[Item.sling.ordinal()] = sling;
         
-   
+        InventoryItem sword = new InventoryItem();
+        sword.setDescription("Sword");
+        sword.setQuantityInStock(0);
+        sword.setRequiredAmount(1);
+        inventory[Item.sword.ordinal()] = sword;
+        
         return inventory;
     }
 
@@ -153,5 +174,44 @@ public class GameControl {
         return LDSScriptureGameTeam.getCurrentGame().getInventory();
     }
 
+    private static void assignScenesToLocations(Map map, Scene[] scenes) {
+        Location[][] locations = map.getLocations();
+       
+        //start point
+        locations[0][0].setScene(scenes[SceneType.redSea.ordinal()]);
+        locations[0][1].setScene(scenes[SceneType.start.ordinal()]);
+        locations[0][2].setScene(scenes[SceneType.lehisTent.ordinal()]);
+        locations[0][3].setScene(scenes[SceneType.desert.ordinal()]);
+        locations[0][4].setScene(scenes[SceneType.desert.ordinal()]);
+        locations[0][5].setScene(scenes[SceneType.desert.ordinal()]);
+        locations[0][6].setScene(scenes[SceneType.desert.ordinal()]);
+        locations[0][7].setScene(scenes[SceneType.desert.ordinal()]);
+        locations[0][8].setScene(scenes[SceneType.desert.ordinal()]);
+        locations[0][9].setScene(scenes[SceneType.desert.ordinal()]);
+        locations[1][0].setScene(scenes[SceneType.desert.ordinal()]);
+        locations[1][1].setScene(scenes[SceneType.redSea.ordinal()]);
+        locations[1][2].setScene(scenes[SceneType.camel.ordinal()]);
+        locations[1][3].setScene(scenes[SceneType.preparation.ordinal()]);
+        locations[2][2].setScene(scenes[SceneType.desert.ordinal()]);
+        locations[3][3].setScene(scenes[SceneType.desert.ordinal()]);
+        locations[4][4].setScene(scenes[SceneType.desert.ordinal()]);
+        locations[5][5].setScene(scenes[SceneType.desert.ordinal()]);
+        locations[6][6].setScene(scenes[SceneType.desert.ordinal()]);
+        locations[7][7].setScene(scenes[SceneType.desert.ordinal()]);
+        locations[8][8].setScene(scenes[SceneType.desert.ordinal()]);
+        locations[9][9].setScene(scenes[SceneType.desert.ordinal()]);
+        locations[10][10].setScene(scenes[SceneType.desert.ordinal()]);
+        locations[11][11].setScene(scenes[SceneType.desert.ordinal()]);
+        locations[12][12].setScene(scenes[SceneType.desert.ordinal()]);
+        locations[13][13].setScene(scenes[SceneType.desert.ordinal()]);
+        locations[14][14].setScene(scenes[SceneType.desert.ordinal()]);
+        locations[15][15].setScene(scenes[SceneType.oath.ordinal()]);
+        locations[16][16].setScene(scenes[SceneType.outTheWalls.ordinal()]);
+        locations[17][17].setScene(scenes[SceneType.jerusalem.ordinal()]);
+        locations[18][18].setScene(scenes[SceneType.desert.ordinal()]);
+        locations[19][19].setScene(scenes[SceneType.desert.ordinal()]);
+
+        
+    }
 
 }

@@ -19,11 +19,12 @@ public class MainMenuView extends View {
     }
     
     private void saveGame() {
-        System.out.println("*** Saved ***");
+        System.out.println("*** Saving ***");
     }
     
-    private void displayHelpMenu() {
-        System.out.println("*** This is the help Menu ***");
+    private void displayHelpMenu() {        
+        HelpMenuView helpMenuView = new HelpMenuView();
+        helpMenuView.display();
     }
  
     public MainMenuView() {
@@ -70,7 +71,8 @@ public class MainMenuView extends View {
     
         GameControl.createNewGame(LDSScriptureGameTeam.getPlayer());
         
-        MainMenuView mainMenuView = new MainMenuView();
-        mainMenuView.display();
+        GameMenuView gameMenuView = new GameMenuView();
+        gameMenuView.display();
     }
+
 }

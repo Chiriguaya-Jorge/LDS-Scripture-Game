@@ -6,13 +6,15 @@
 package byui.cit260.ldsScriptureGame.view;
 
 import byui.cit260.ldsScriptureGame.control.GameControl;
+import byui.cit260.ldsScriptureGame.model.Game;
 import byui.cit260.ldsScriptureGame.model.InventoryItem;
 import byui.cit260.ldsScriptureGame.model.Location;
 import byui.cit260.ldsScriptureGame.model.Scene;
+import lds.scripture.game.team.LDSScriptureGameTeam;
 
 /**
  *
- * @author hp
+ * @author Team Work
  */
 public class GameMenuView extends View {
 
@@ -170,18 +172,19 @@ public class GameMenuView extends View {
     
     private void displayHelpMenu() {
         HelpMenuView helpMenu = new HelpMenuView();
-        helpMenu.displayHelpMenuView(); 
+        helpMenu.display(); 
     }
 
     private void viewInventory() {
         // get the sorted list of inventory items for the current game
+        Game game = LDSScriptureGameTeam.getCurrentGame();
         InventoryItem[] inventory = GameControl.getSortedInventoryList();
         
-        System.out.println("\nList of Inventory Items");
+        System.out.println("\n        LIST OF INVENTORY ITEMS");
         StringBuilder line = new StringBuilder("                                                          ");
-        line.insert(0, "Description"); 
-        line.insert(20, "Required");
-        line.insert(30, "In Stock");
+        line.insert(0, "DESCRIPTION"); 
+        line.insert(20, "REQUIRED");
+        line.insert(30, "IN STOCK");
         System.out.println(line.toString());
         
         // for each inventory item

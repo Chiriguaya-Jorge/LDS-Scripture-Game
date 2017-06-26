@@ -7,20 +7,21 @@ package byui.cit260.ldsScriptureGame.model;
 
 /**
  *
- * @author Jorge Chiriguaya
+ * @author Team Work
  */
 public enum Item {
     leather,
     camel,
-    gold,
-    silver,
     grain,
     legume,
+    meat,
     oil,
+    water,
     bow,
     arrow,
-    water,
     salt,
-    meat,
-    sling;
+    sling,
+    gold,
+    silver,
+    sword;
 }

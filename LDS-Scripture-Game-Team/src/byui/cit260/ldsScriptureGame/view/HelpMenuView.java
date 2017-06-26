@@ -12,29 +12,10 @@ import java.util.Scanner;
  *
  * @author dnp
  */
-public class HelpMenuView {
-  private final String menu;
-     private final String promptMessage;
-     private static final String MENU = "\n"
-                + "\n----------------------------------"
-                + "\n Help Menu                        "
-                + "\n ---------------------------------"
-                + "\nG - What is the goal of the game?"
-                + "\nM - How to move"
-                + "\nT - Tools available to construct a Mean To Travel"
-                + "\nC - Construct tools"
-                + "\nV - View map"
-                + "\nA - Avoid Obstacles"
-                + "\nQ - Quit game"
-                + "\n----------------------------------";
-     
+public class HelpMenuView extends View {
+  
     public HelpMenuView(){
-        System.out.println(MENU);
-        
-        this.promptMessage = "\n Help Menu: Please select an option: ";
-        
-        this.menu = "\nQ - Quit"
-                + "\n"
+        super( "\n"
                 + "\n----------------------------------"
                 + "\n Help Menu                        "
                 + "\n ---------------------------------"
@@ -45,67 +26,32 @@ public class HelpMenuView {
                 + "\nV - View map"
                 + "\nA - Avoid Obstacles"
                 + "\nQ - Quit game"
-                + "\n----------------------------------";
+                + "\n----------------------------------");
                 }
-    
-    
-   public void displayHelpMenuView() {
-        boolean done = false; //set flag to not done
-        do {
-            //promp for and gets players name
-            String menuOption = this.getMenuOption();
-            
-            if (menuOption.toUpperCase().equals("Q")) //USER WANTS TO QUIT
-                    return; //exit the game
-            
-            //do the requested action adnd display the next view
-            done = this.doAction(menuOption);
-        } while (!done); 
-    }
 
-    private String getMenuOption() {
-        Scanner keyboard = new Scanner(System.in); //get infile for keyboard
-        String value = ""; //value to be returned
-        boolean valid = false;  //initialize to not valid
-        
-        while (!valid) { // loop while an invalid value is enter
-            System.out.println("\n" + this.promptMessage);
-            
-            value = keyboard.nextLine();//getnext line typed on keyboard
-            value = value.trim(); //trim off leading and trailing blanks
-            
-            if (value.length() < 1 ){ //if value is blank
-                System.out.println("\nInvalid value: value cannot be blank");
-                continue;
-                            }
-            break;
-        }
-        return value; //returns the value enteredjsn
-        }
-
-    private boolean doAction(String menuOption) {
+  @Override
+    public boolean doAction(String menuOption) {
        menuOption = menuOption.toUpperCase(); //converts to upper case
        
        switch (menuOption){
            case "G": // explains goal of game
                this.goalOfGame();
-               
+               break;
            case "M": //how to move
                this.move();
-               
+               break;
            case "T": // tools available to construct Mean to travel
                this.toolsAvailable();
-            
+               break;
            case "C": //construction tools
                this.constructTools();
-               
+               break;
            case "V": //View map
                this.viewMap();
-               
+               break;
            case "A": //avoid Obstacles during the travel
                this.avoidObstacles();
                break;
-              
            default:
                System.out.println("\nInvalid selection *** Try again");
                break;     
@@ -141,7 +87,7 @@ public class HelpMenuView {
     }
 
     private void move() {
-        System.out.println("*** how to move?"); 
+        System.out.println("*** How to move? ***"); 
     }
 
     private void toolsAvailable() {
