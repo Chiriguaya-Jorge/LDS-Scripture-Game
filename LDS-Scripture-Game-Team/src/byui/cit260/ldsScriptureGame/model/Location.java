@@ -6,6 +6,7 @@
 package byui.cit260.ldsScriptureGame.model;
 
 
+import byui.cit260.ldsScriptureGame.enums.Character;
 import java.io.Serializable;
 import java.util.ArrayList;
 /**

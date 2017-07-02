@@ -6,7 +6,8 @@
 package byui.cit260.ldsScriptureGame.view;
 
 import byui.cit260.ldsScriptureGame.control.MapControl;
-import byui.cit260.ldsScriptureGame.model.Character;
+import byui.cit260.ldsScriptureGame.enums.Character;
+import byui.cit260.ldsScriptureGame.exceptions.MapControlException;
 import java.awt.Point;
 import java.util.Scanner;
 
@@ -32,7 +33,7 @@ public class MoveCharacterView extends View {
 
     
     public boolean doAction(String choice) {
-        Character character; 
+        Character character = null; 
 
         choice = choice.trim().toUpperCase(); // trim blanks and uppercase
 
@@ -52,6 +53,7 @@ public class MoveCharacterView extends View {
                 break; 
             case "M":
                 character = Character.Sam;
+                        
                 break;
             case "Z":
                 character = Character.Zoram;
@@ -74,13 +76,12 @@ public class MoveCharacterView extends View {
                 break;
 
             // move character to specified location
-            int returnValue = MapControl.moveCharacterToLocation(character, coordinates);
-            if (returnValue < 0) {
-                System.out.println("\nERROR" + character + 
-                                   " could not be moved to location: " + 
-                                   coordinates.x + ", " + coordinates.y);
+            try {
+            MapControl.moveCharacterToLocation(character, coordinates);
+            } catch (MapControlException me) {
+                System.out.println(me.getMessage());
             }
-
+           
             System.out.println("\n" + character + 
                                " was successfully moved to location: " + 
                                coordinates.x + ", " + coordinates.y);

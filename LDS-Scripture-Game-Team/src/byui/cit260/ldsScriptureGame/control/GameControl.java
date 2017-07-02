@@ -8,12 +8,13 @@ package byui.cit260.ldsScriptureGame.control;
 import byui.cit260.ldsScriptureGame.model.Player;
 import byui.cit260.ldsScriptureGame.model.Game;
 import lds.scripture.game.team.LDSScriptureGameTeam;
-import byui.cit260.ldsScriptureGame.model.Item;
+import byui.cit260.ldsScriptureGame.enums.Item;
 import byui.cit260.ldsScriptureGame.model.InventoryItem;
 import byui.cit260.ldsScriptureGame.model.Location;
 import byui.cit260.ldsScriptureGame.model.Map;
 import byui.cit260.ldsScriptureGame.model.Scene;
-import byui.cit260.ldsScriptureGame.model.SceneType;
+import byui.cit260.ldsScriptureGame.enums.SceneType;
+import byui.cit260.ldsScriptureGame.exceptions.MapControlException;
 
 /**
  *
@@ -31,7 +32,8 @@ public class GameControl {
         return player;
     }
 
-    public static void createNewGame(Player player) {
+    public static void createNewGame(Player player) 
+            throws MapControlException {
         Game game = new Game(); // create new game
        LDSScriptureGameTeam.setCurrentGame(game); // save in LDSScriptureGameTeam
        

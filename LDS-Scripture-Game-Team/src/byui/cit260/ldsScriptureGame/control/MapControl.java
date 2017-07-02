@@ -5,15 +5,16 @@
  */
 package byui.cit260.ldsScriptureGame.control;
 
-import byui.cit260.ldsScriptureGame.model.Character;
-import byui.cit260.ldsScriptureGame.model.Item;
+import byui.cit260.ldsScriptureGame.enums.Character;
+import byui.cit260.ldsScriptureGame.enums.Item;
 import byui.cit260.ldsScriptureGame.model.Game;
 import byui.cit260.ldsScriptureGame.model.InventoryItem;
 import byui.cit260.ldsScriptureGame.model.Location;
 import byui.cit260.ldsScriptureGame.model.Map;
 import byui.cit260.ldsScriptureGame.model.Scene;
-import byui.cit260.ldsScriptureGame.model.SceneType;
+import byui.cit260.ldsScriptureGame.enums.SceneType;
 import byui.cit260.ldsScriptureGame.model.ResourceScene;
+import byui.cit260.ldsScriptureGame.exceptions.MapControlException;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,20 +38,7 @@ public class MapControl {
         
         return map;
     }
-    
-    public static int moveCharactersToStartingLocation(Map map) {
-        // for every actor
-        Character[] characters = Character.values();
-
-        for (Character actor : characters) {
-            int returnValue = MapControl.moveCharacterToLocation(actor, actor.getCoordinates());
-            if (returnValue < 0) {
-                return returnValue;
-            }
-        }
-        return 0;
-    }    
-    
+   
     private static Scene[] createScenes() {
         Game game = LDSScriptureGameTeam.getCurrentGame();
         
@@ -126,32 +114,32 @@ public class MapControl {
         return scenes;
     }
     
-    public static int moveCharacterToLocation(Character character, Point coordinates) {
-        
+    public static void moveCharactersToStartingLocation(Map map) 
+                            throws MapControlException{
+        // for every character
+        Character[] characters = Character.values();
+
+        for (Character character : characters) {
+            Point coordinates = character.getCoordinates();
+            MapControl.moveCharacterToLocation(character, coordinates);
+        }
+    }    
+    
+    public static void moveCharacterToLocation(Character character, Point coordinates)
+                           throws MapControlException {
+                                   
         Map map = LDSScriptureGameTeam.getCurrentGame().getMap();
         int newRow = coordinates.x-1;
         int newColumn = coordinates.y-1;
         
         if (newRow < 0  || newRow >= map.getNoOfRows() ||
             newColumn < 0  || newColumn >= map.getNoOfColumns()) {
-            return -1;
+            throw new MapControlException("Can not move character to location "
+                                          + coordinates.x + ", " + coordinates.y
+                                          + " because that location is outside "
+                                          + " the bounds of the map.");
         }
         
-        Location newLocation = map.getLocations()[newRow][newColumn];
-        Point actorCoordinates = character.getCoordinates();
-        Location oldLocation = map.getLocations()[actorCoordinates.x][actorCoordinates.y];
-        
-        // check to see if the actor is in the current location
-        if (oldLocation != null) {
-            oldLocation.removeCharacter(character); // remove actor from old location
-        }
-        
-        newLocation.addCharacter(character); // add actor to new location
-        actorCoordinates.x = newRow;
-        actorCoordinates.y = newColumn; // set actor to new location
-        newLocation.setVisited(true); // mark as a visted locations
-        
-        return 0;
     }
     
     public static Location getLocation(Point coordinates) {

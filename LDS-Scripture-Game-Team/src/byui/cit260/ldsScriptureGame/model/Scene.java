@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package byui.cit260.ldsScriptureGame.model;
+import byui.cit260.ldsScriptureGame.enums.SceneGroup;
 import java.io.Serializable;
 
 /**

@@ -6,7 +6,7 @@
 package byui.cit260.ldsScriptureGame.view;
 
 import byui.cit260.ldsScriptureGame.control.MapControl;
-import byui.cit260.ldsScriptureGame.model.Character;
+import byui.cit260.ldsScriptureGame.enums.Character;
 import byui.cit260.ldsScriptureGame.model.Location;
 import java.awt.Point;
 import java.util.ArrayList;

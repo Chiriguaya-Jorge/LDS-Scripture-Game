@@ -5,6 +5,9 @@
  */
 package byui.cit260.ldsScriptureGame.model;
 
+import byui.cit260.ldsScriptureGame.enums.SceneGroup;
+import byui.cit260.ldsScriptureGame.enums.Item;
+
 /**
  *
  * @author Jorge Chiriguaya
