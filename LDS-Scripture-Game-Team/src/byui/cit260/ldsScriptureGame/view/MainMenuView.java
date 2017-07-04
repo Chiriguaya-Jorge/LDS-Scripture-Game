@@ -7,6 +7,7 @@ package byui.cit260.ldsScriptureGame.view;
 
 import byui.cit260.ldsScriptureGame.control.GameControl;
 import lds.scripture.game.team.LDSScriptureGameTeam;
+import byui.cit260.ldsScriptureGame.exceptions.MapControlException;
 
 /**
  *
@@ -69,10 +70,16 @@ public class MainMenuView extends View {
  
     private void startNewGame(){
     
-        GameControl.createNewGame(LDSScriptureGameTeam.getPlayer());
-        
-        GameMenuView gameMenuView = new GameMenuView();
-        gameMenuView.display();
-    }
+        try {   
+            // create a new game
+            GameControl.createNewGame(LDSScriptureGameTeam.getPlayer());    
+        } catch (MapControlException mce) {
+            ErrorView.display("MainMenuView", mce.getMessage());
+            return;
+        } 
 
+        // display the game menu
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.display();
+    }
 }

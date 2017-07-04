@@ -8,6 +8,7 @@ package byui.cit260.ldsScriptureGame.view;
 import byui.cit260.ldsScriptureGame.control.MapControl;
 import byui.cit260.ldsScriptureGame.enums.Character;
 import byui.cit260.ldsScriptureGame.model.Location;
+import byui.cit260.ldsScriptureGame.exceptions.ViewException;
 import java.awt.Point;
 import java.util.ArrayList;
 /**
@@ -17,17 +18,18 @@ import java.util.ArrayList;
 public class LocationView extends View {
     
     public LocationView() {
-        System.out.println("\n"
+        super("\n"
             + "Enter the row and column number of the location you want to view (e.g., 1 3).");
     }
 
 
     @Override
-    public boolean doAction(String choice) {
-
+    public boolean doAction(String obj) {
+        String choice = (String) obj;
+        try{
             Point coordinates = this.getCoordinates(choice); // get the row and column
             if (coordinates == null)
-                return false;
+                return true;
             
             // get the location in the map
             Location location = MapControl.getLocation(coordinates);
@@ -35,12 +37,18 @@ public class LocationView extends View {
             // display contents of location
             this.displayLocationInfo(coordinates, location);     
 
+        } catch (ViewException ex) {
+                this.console.println(ex.getMessage());
+                return false;
+        }       
+
         return true;  
         
     }
     
     public Point getCoordinates(String value) {
-       
+       Point coordinates = null;
+        
         value = value.trim().toUpperCase();
         if (value.equals("Q"))
             return null;
@@ -49,25 +57,48 @@ public class LocationView extends View {
         String[] values = value.split(" ");
 
         if (values.length < 2) {
-            System.out.println("You must enter both a row and column number.");
+            ErrorView.display("ViewLocationView", "You must enter both a row and column number.");
         }
 
         // parse out row and column numbers
-        int row = Integer.parseInt(values[0]);
-        int column = Integer.parseInt(values[1]);
-        return new Point(row, column);
-       
+        try {
+            int row = Integer.parseInt(values[0]);
+            int column = Integer.parseInt(values[1]);
+            coordinates = new Point(row, column);
+
+        } catch (NumberFormatException nf) {
+            ErrorView.display("ViewLocationView", "The row or column entered is not a number.");
+        }  
+        
+        return coordinates;
     }
 
+
     private void displayLocationInfo(Point coordinates, Location location) {
-    System.out.println("\n"
-                       + "Location (" + coordinates.x + ", " + coordinates.y + ")"
-                       + location.getScene().getDescription());
-    System.out.println("\n\tCharacter in location");
-    ArrayList<Character> characterInLocation = location.getCharacters();
-    for (Character character : characterInLocation) {
-        System.out.println("\t" + character);        
-    }
+    if (coordinates == null || location == null) {
+            ErrorView.display("ViewLocationView", 
+                    "diplayLocationInfo - coordinates and/or location is null");
+            return;
+        }
         
+        if (location.getScene() == null) {
+            this.console.println("\nThis location is empty");
+            return;
+        }
+        
+        String message = "\nLocation (" + coordinates.x + ", " + coordinates.y + ")\n"
+                         + this.getBlockedMessage(location.getScene().getDescription());
+        this.console.println(message);
+   
+        ArrayList<Character> charactersInLocation = location.getCharacters();
+        if (charactersInLocation.size() < 1) {
+            this.console.println("\nThere are no characters in this location");
+        }
+        else {
+            this.console.println("\nThe following actors are currently in this location");
+            for (Character character : charactersInLocation) {
+                this.console.println("   " + character);        
+            }
+        }
     }
 }
