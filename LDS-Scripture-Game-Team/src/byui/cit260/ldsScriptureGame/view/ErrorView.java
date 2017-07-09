@@ -10,7 +10,7 @@ import java.io.PrintWriter;
 
 /**
  *
- * @author Jorge Chiriguaya
+ * @author Team Assignment Week 12
  */
 class ErrorView {
     private static final PrintWriter errorFile = LDSScriptureGameTeam.getOutFile();

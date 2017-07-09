@@ -27,6 +27,7 @@ public class LDSScriptureGameTeam {
     
     private static PrintWriter outFile = null;
     private static BufferedReader inFile = null;
+    
     private static PrintWriter logFile = null;
     
     public static void main(String[] args) {

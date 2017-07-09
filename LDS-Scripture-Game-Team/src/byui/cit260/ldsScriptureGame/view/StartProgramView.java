@@ -79,7 +79,7 @@ public class StartProgramView {
         while (!valid){
             System.out.println("\n" + this.displayMessage);
             
-            value = keyboard.nextLine();
+            value = this.keyboard.readLine();
             value = value.trim();
             
             if (value.length()< 1) {
