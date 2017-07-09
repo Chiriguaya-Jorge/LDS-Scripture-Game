@@ -11,6 +11,7 @@ import byui.cit260.ldsScriptureGame.model.Location;
 import byui.cit260.ldsScriptureGame.exceptions.ViewException;
 import java.awt.Point;
 import java.util.ArrayList;
+
 /**
  *
  * @author Jorge Chiriguaya
@@ -46,7 +47,7 @@ public class LocationView extends View {
         
     }
     
-    public Point getCoordinates(String value) {
+    public Point getCoordinates(String value) throws ViewException {
        Point coordinates = null;
         
         value = value.trim().toUpperCase();

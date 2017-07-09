@@ -8,12 +8,15 @@ package byui.cit260.ldsScriptureGame.view;
 import byui.cit260.ldsScriptureGame.control.GameControl;
 import byui.cit260.ldsScriptureGame.model.Player;
 import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 
 /**
  *
  * @author Reinaldo
+ * TEAM WORK week 12
  */
-public class StartProgramView {
+public class StartProgramView extends View {
     
     private String displayMessage;
     
@@ -70,28 +73,7 @@ public class StartProgramView {
         
     }
 
-    public String getInput() {
-        
-        Scanner keyboard = new Scanner(System.in);
-        boolean valid = false;
-        String value = null;
-        
-        while (!valid){
-            System.out.println("\n" + this.displayMessage);
-            
-            value = this.keyboard.readLine();
-            value = value.trim();
-            
-            if (value.length()< 1) {
-                System.out.println("\n*** You must enter a value *** ");
-                continue;
-            }
-            break;
-        }
-        
-        return value;
-    }
-    
+   
     public boolean doAction(String playersName) {
         
         if (playersName.length() < 2){

@@ -16,6 +16,7 @@ import java.io.BufferedReader;
 /**
  *
  * @author Reinaldo
+ * TEAM WORK week 12
  */
 public class LDSScriptureGameTeam {
 
