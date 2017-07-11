@@ -11,10 +11,17 @@ import byui.cit260.ldsScriptureGame.model.InventoryItem;
 import byui.cit260.ldsScriptureGame.model.Location;
 import byui.cit260.ldsScriptureGame.model.Scene;
 import lds.scripture.game.team.LDSScriptureGameTeam;
+import byui.cit260.ldsScriptureGame.enums.Character;
+
+import java.awt.Point;
+import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
  * @author Team Work
+ * Individual Assignment Week 12 Jorge Chiriguaya List of actors report
  */
 public class GameMenuView extends View {
 
@@ -41,6 +48,7 @@ public class GameMenuView extends View {
   
     
     
+    @Override
     public boolean doAction(String value) {
         
         value = value.toUpperCase(); // convert to all upper case
@@ -157,8 +165,28 @@ public class GameMenuView extends View {
         System.out.println("*** findResources stub function called ***");        
     }
 
-    private void deliverResources() {
-        System.out.println("*** deliverResources stub function called ***");        
+    private void displayCharacters() {
+        this.viewCharacters(LDSScriptureGameTeam.getOutFile());
+    }
+    private void viewCharacters(PrintWriter out) {
+        Game game = LDSScriptureGameTeam.getCurrentGame();
+        out.println("\n    LIST OF ACTORS");
+        StringBuilder line = new StringBuilder("                                                          ");
+        line.insert(0, "NAME"); 
+        line.insert(15, "LOCATION");
+        out.println(line.toString());
+        
+        Character[] characters = Character.values();
+        for (Character character : characters) {
+            Point coordinates = game.getCharactersLocation()[character.ordinal()];
+            line = new StringBuilder("                                                          ");
+            line.insert(0, character.name());
+            int row = coordinates.x+1;
+            int column = coordinates.y+1;
+            line.insert(17,  + row + ", " + column);
+            out.println(line.toString());
+        }
+        
     }
     
     private void viewCharacters() {
@@ -237,5 +265,45 @@ public class GameMenuView extends View {
         System.out.println("\n");
         
     }
+
+    private void deliverResources() {
+        System.out.println("*** deliverResources function called ***");        
+    }
     
+    public void printReport() {
+        // get the filepath and name of the file
+        this.console.println("\nEnter the file path where the report is to be saved");
+        
+        String filePath = this.getInput();
+        if (filePath == null) {
+            return;
+        }
+        
+        // Create a new printwriter
+        try (PrintWriter reportFile = new PrintWriter(filePath)) {
+            
+            
+            LocalDateTime currentTime = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+            String dateTime = formatter.format(currentTime);
+            
+            reportFile.println("Report printed: " + dateTime);
+            
+            this.viewMap(reportFile);
+            
+            reportFile.println();
+            this.viewInventory(reportFile);
+
+            reportFile.println();
+            this.viewCharacters(reportFile); 
+            
+            LDSScriptureGameTeam.getOutFile().println(
+                    "\n*** Report printed to file: " + filePath + " ***");
+            
+        } catch (Exception ex) {
+            ErrorView.display("GameMenuView", "Error writing to game report file. "
+                    + "\n\t" + ex.getMessage());
+        }
+
+    }
 }
