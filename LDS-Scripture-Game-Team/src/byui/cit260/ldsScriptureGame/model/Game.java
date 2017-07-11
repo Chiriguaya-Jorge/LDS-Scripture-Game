@@ -7,9 +7,13 @@ package byui.cit260.ldsScriptureGame.model;
 
 import java.io.Serializable;
 
+import lds.scripture.game.team.LDSScriptureGameTeam;
+import java.awt.Point;
+
 /**
  *
  * @author Team Work
+ * Jorge Chiriguaya Week 12 
  */
 public class Game implements Serializable {
     
@@ -18,6 +22,8 @@ public class Game implements Serializable {
     private Player player;
     private InventoryItem[] inventory; 
     private Map map;
+    private Point[] charactersLocation = new Point[Character.values().length];
+
    
     
 
@@ -57,6 +63,13 @@ public class Game implements Serializable {
         this.map = map;
     }
     
+    public Point[] getCharactersLocation() {
+        return charactersLocation;
+    }
+
+    public void setCharactersLocation(Point[] actorsLocation) {
+        this.charactersLocation = charactersLocation;
+    }
     
     @Override
     public String toString() {
