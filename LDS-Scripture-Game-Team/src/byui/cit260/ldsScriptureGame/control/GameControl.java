@@ -16,6 +16,7 @@ import byui.cit260.ldsScriptureGame.model.Scene;
 import byui.cit260.ldsScriptureGame.enums.SceneType;
 import byui.cit260.ldsScriptureGame.exceptions.MapControlException;
 import byui.cit260.ldsScriptureGame.exceptions.GameControlException;
+import java.awt.Point;
 import java.io.FileNotFoundException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -27,9 +28,16 @@ import java.security.InvalidParameterException;
 /**
  *
  * @author Team Work Week 12
+ * Jorge Chiriguaya
+ * Week 13
  */
-public class GameControl {
 
+public class GameControl {
+    
+    public GameControl(){
+    }
+
+    
     public static Player createPlayer(String name) {
 
         Player player = new Player();
@@ -40,6 +48,14 @@ public class GameControl {
         return player;
     }
 
+    public enum Probability {
+        OK,
+        TOO_LOW,
+        TOO_HIGH,
+        LOW_PROBABILITY,
+        HIGH_PROBABILITY;
+    }
+    
     public static void createNewGame(Player player) 
             throws MapControlException {
         Game game = new Game(); // create new game
@@ -55,8 +71,9 @@ public class GameControl {
        game.setMap(map); // save map in game
 
        // move actors to starting position in the map
-              
-       MapControl.moveCharactersToStartingLocation(map);
+       Character[] characters = Character.values();
+       
+       MapControl.moveCharactersToStartingLocation(map, characters);
 
     }
     

@@ -26,7 +26,7 @@ import lds.scripture.game.team.LDSScriptureGameTeam;
  */
 public class MapControl {
 
-    public static Map createMap() {
+    public static Map createMap() throws MapControlException  {
         // create the map
         Map map = new Map(20, 20);
         
@@ -114,18 +114,18 @@ public class MapControl {
         return scenes;
     }
     
-    public static void moveCharactersToStartingLocation(Map map) 
+    public static void moveCharactersToStartingLocation(Map map, Character[] characters) 
                             throws MapControlException{
         // for every character
-        Character[] characters = Character.values();
-
+        Game game = LDSScriptureGameTeam.getCurrentGame();
         for (Character character : characters) {
-            Point coordinates = character.getCoordinates();
-            MapControl.moveCharacterToLocation(character, coordinates);
+            Point coordinates = new Point(0, 2);
+            game.getCharactersLocation()[character.ordinal()] = new Point();
+            MapControl.moveCharacterToLocation(game, character, coordinates);
         }
     }    
     
-    public static void moveCharacterToLocation(Character character, Point coordinates)
+    public static void moveCharacterToLocation(Game game, Character character, Point coordinates)
                            throws MapControlException {
                                    
         Map map = LDSScriptureGameTeam.getCurrentGame().getMap();
@@ -148,13 +148,57 @@ public class MapControl {
     
     private static void assignScenesToLocations(Map map, Scene[] scenes) {
         Location[][] locations = map.getLocations();
-        Point coordinate;
         
-        HashMap<String, ArrayList<Point>> sceneLocations =  new HashMap<String, ArrayList<Point>>();
+        // start point
+        locations[0][0].setScene(scenes[SceneType.desert.ordinal()]);
+        locations[0][1].setScene(scenes[SceneType.desert.ordinal()]);
+        locations[0][2].setScene(scenes[SceneType.start.ordinal()]);
+      
         
+        
+        HashMap<String, ArrayList<Point>> sceneLocations =  
+                new HashMap<String, ArrayList<Point>>();
         // create list of scenes to be assigned to locations
-         
+         ArrayList<Point> leatherCoordinates = new ArrayList<Point>();
+        leatherCoordinates.add(new Point(1,8));
+        leatherCoordinates.add(new Point(2,8));
+        leatherCoordinates.add(new Point(1,9));
+        leatherCoordinates.add(new Point(2,9));
+        leatherCoordinates.add(new Point(2,13));
+        leatherCoordinates.add(new Point(3,13));
+        leatherCoordinates.add(new Point(4,13));
+        leatherCoordinates.add(new Point(5,13));
+        leatherCoordinates.add(new Point(3,14));
+        leatherCoordinates.add(new Point(4,14));
+        leatherCoordinates.add(new Point(9,16));
+        leatherCoordinates.add(new Point(10,16));
+        leatherCoordinates.add(new Point(9,17));
+        leatherCoordinates.add(new Point(11,14));
+        leatherCoordinates.add(new Point(12,5));
+        sceneLocations.put("LEATHER", leatherCoordinates);
         
-        
+        // water
+        locations[11][8].setScene(scenes[SceneType.water.ordinal()]);
+        locations[9][14].setScene(scenes[SceneType.water.ordinal()]);
+        locations[12][6].setScene(scenes[SceneType.leather.ordinal()]);
+        locations[1][8].setScene(scenes[SceneType.leather.ordinal()]);
+        locations[1][9].setScene(scenes[SceneType.leather.ordinal()]);
+        locations[2][8].setScene(scenes[SceneType.leather.ordinal()]);
+        locations[2][9].setScene(scenes[SceneType.leather.ordinal()]);
+        locations[2][13].setScene(scenes[SceneType.leather.ordinal()]);
+        locations[3][12].setScene(scenes[SceneType.leather.ordinal()]);
+        locations[3][13].setScene(scenes[SceneType.leather.ordinal()]);
+        locations[3][14].setScene(scenes[SceneType.leather.ordinal()]);
+        locations[4][13].setScene(scenes[SceneType.leather.ordinal()]);
+        locations[4][14].setScene(scenes[SceneType.leather.ordinal()]);
+        locations[5][13].setScene(scenes[SceneType.leather.ordinal()]);
+        locations[9][16].setScene(scenes[SceneType.leather.ordinal()]);
+        locations[9][17].setScene(scenes[SceneType.leather.ordinal()]);
+        locations[10][16].setScene(scenes[SceneType.leather.ordinal()]);
+        locations[11][6].setScene(scenes[SceneType.leather.ordinal()]);
+        locations[12][5].setScene(scenes[SceneType.leather.ordinal()]);
+        locations[11][14].setScene(scenes[SceneType.leather.ordinal()]);
+        locations[9][10].setScene(scenes[SceneType.riverCrossing.ordinal()]);
+        locations[10][6].setScene(scenes[SceneType.salt.ordinal()]);
     }
 }
