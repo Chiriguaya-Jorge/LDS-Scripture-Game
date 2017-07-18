@@ -7,34 +7,39 @@ package byui.cit260.ldsScriptureGame.view;
 
 import byui.cit260.ldsScriptureGame.control.MapControl;
 import byui.cit260.ldsScriptureGame.enums.Character;
+import byui.cit260.ldsScriptureGame.enums.Direction;
 import byui.cit260.ldsScriptureGame.exceptions.MapControlException;
+import byui.cit260.ldsScriptureGame.exceptions.ViewException;
+import byui.cit260.ldsScriptureGame.model.Game;
+import lds.scripture.game.team.LDSScriptureGameTeam;
 import java.awt.Point;
-import java.util.Scanner;
 
 /**
  *
- * @author hp
+ * @author Jorge Chiriguaya Week 13
  */
 public class MoveCharacterView extends View {
 
     public MoveCharacterView() {
-        System.out.println("\n"
-                           + "\n-------------------------------------------"
-                           + "\n| Select character to move                |"
-                           + "\n-------------------------------------------"
-                           + "\nA - Laman"
-                           + "\nE - Lemuel"
-                           + "\nN - Nephi"
-                           + "\nM - Sam"
-                           + "\nZ - Zoram"
-                           + "\nQ - Quit"
-                           + "\n------------------------------------------");
+        super("\n"
+             + "\n-------------------------------------------"
+             + "\n| Select character to move                |"
+             + "\n-------------------------------------------"
+             + "\nA - Laman"
+             + "\nE - Lemuel"
+             + "\nN - Nephi"
+             + "\nM - Sam"
+             + "\nZ - Zoram"
+             + "\nQ - Quit"
+             + "\n------------------------------------------");
     }
 
-    
-    public boolean doAction(String choice) {
-        Character character = null; 
+    public boolean doAction(String obj) {
+        
+        Character character; 
+        Game game = LDSScriptureGameTeam.getCurrentGame();
 
+        String choice = (String) obj;
         choice = choice.trim().toUpperCase(); // trim blanks and uppercase
 
         // check for valid character
@@ -53,7 +58,6 @@ public class MoveCharacterView extends View {
                 break; 
             case "M":
                 character = Character.Sam;
-                        
                 break;
             case "Z":
                 character = Character.Zoram;
@@ -61,57 +65,122 @@ public class MoveCharacterView extends View {
             case "Q":
                 return true;
             default:
-                System.out.println("Invalid selection");
+                
+                ErrorView.display("MoveCharacterView", "Invalid selection");
                 return false;
         }
 
 
         boolean done = false;
         do {
-
-            // prompt for and get the row and column numbers
-            System.out.println("\nEnter the row and column number of the location (e.g., 1 3)");
-            Point coordinates = this.getCoordinates(); // get the row and column
-            if (coordinates == null) // entered "Q" to quit
-                break;
-
-            // move character to specified location
+            this.console.println("\nYou can move up (U), down(D), left(L) or right (R)");
             try {
-            MapControl.moveCharacterToLocation(character, coordinates);
-            } catch (MapControlException me) {
-                System.out.println(me.getMessage());
-            }
-           
-            System.out.println("\n" + character + 
-                               " was successfully moved to location: " + 
-                               coordinates.x + ", " + coordinates.y);
-            done = true;
-
+                // prompt for and get the row and column numbers
+                this.console.println("\nEnter the direction and distance to move (e.g. U 2) ");
+                Movement movement = this.getCoordinates(); // get the row and column
+                if (movement == null) // entered "Q" to quit
+                    break;
+                
+                // move actor to specified location
+                Point blockedLocation = MapControl.moveActor(character, 
+                                                       movement.direction, 
+                                                       movement.distance);
+                
+                Point coordinates = game.getCharactersLocation()[character.ordinal()];
+                Point newPosition = new Point(coordinates.x + 1, coordinates.y + 1);
+      
+                String locationDescription;
+                String message = "";
+                if (blockedLocation != null) {
+                    locationDescription = MapControl.getLocation(blockedLocation).getScene().getDescription();
+                    message = "The path was blocked at position " 
+                                    +   blockedLocation.x + ", " + blockedLocation.y + ".\n"
+                                    +   this.getBlockedMessage(locationDescription)
+                                    +   "\n\n" + character + " is currently in position " 
+                                    +   newPosition.x + ", " + newPosition.y;  
+                    this.console.println(message);
+                    
+                }
+                else {
+                    locationDescription = MapControl.getLocation(newPosition).getScene().getDescription();
+                    message = character + " was successfully moved to position " 
+                            + newPosition.x + ", " + newPosition.y + ".\n"
+                            + this.getBlockedMessage(locationDescription);
+                    this.console.println(message);                
+                }
+                
+                done = true;
+            } catch (ViewException | MapControlException ex) {
+                    ErrorView.display("MoveActorView", ex.getMessage());
+            }       
         } while (!done);
 
         return false;  
     }
 
-    public Point getCoordinates() {
-
+    public Movement getCoordinates() throws ViewException {
+        Movement movement = null;
+        
         String value = this.getInput();
         value = value.trim().toUpperCase();
         if (value.equals("Q"))
             return null;
-
-        //tokenize values int string
+        
+                //tokenize values int string
         String[] values = value.split(" ");
-
+        
+        
         if (values.length < 2) {
-            System.out.println("You must enter both a row and column number.");
+            ErrorView.display(this.getClass().getName(),
+                              "You must enter both a direction and distance.");
             return null;
         }
+        
+        // get the direction
+        Direction direction;
+        switch (value.charAt(0)) {
+            case 'U' : direction = Direction.U;
+                break;
+            case 'D' : direction = Direction.D;
+                break;
+            case 'L' : direction = Direction.L;
+                break;
+            case 'R' : direction = Direction.R;
+                break;
+            default: 
+                ErrorView.display(this.getClass().getName(),
+                                 "The direction must be U, D, L or R");
+                return null;
+        }
 
-        // parse out row and column numbers
-        int row = Integer.parseInt(values[0]);
-        int column = Integer.parseInt(values[1]);
-        return new Point(row, column);
-
+        // convert the distance to a number
+        try {
+            int distance = Integer.parseInt(values[1]);
+            if (distance < 1) {
+                ErrorView.display(this.getClass().getName(),
+                                 "The distance must be greater than zero.");
+                return null;
+            }
+            
+            movement = new Movement(direction, distance);
+        }     
+        catch (NumberFormatException nf) {
+            ErrorView.display(this.getClass().getName(),
+                             "The distance is not a  number.");
+        }     
+        
+        return movement;
+    }
+    
+    private class Movement {
+        
+        Direction direction;
+        int distance;
+        
+        public Movement(Direction direction, int distance) {
+            this.direction = direction;
+            this.distance = distance;
+        }
     }
     
 }

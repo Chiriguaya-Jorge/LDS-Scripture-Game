@@ -9,6 +9,7 @@ import byui.cit260.ldsScriptureGame.model.Player;
 import byui.cit260.ldsScriptureGame.model.Game;
 import lds.scripture.game.team.LDSScriptureGameTeam;
 import byui.cit260.ldsScriptureGame.enums.Item;
+import byui.cit260.ldsScriptureGame.enums.Character;
 import byui.cit260.ldsScriptureGame.model.InventoryItem;
 import byui.cit260.ldsScriptureGame.model.Location;
 import byui.cit260.ldsScriptureGame.model.Map;

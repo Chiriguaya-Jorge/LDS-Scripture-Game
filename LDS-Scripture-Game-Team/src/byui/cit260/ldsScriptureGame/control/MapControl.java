@@ -7,15 +7,19 @@ package byui.cit260.ldsScriptureGame.control;
 
 import byui.cit260.ldsScriptureGame.enums.Character;
 import byui.cit260.ldsScriptureGame.enums.Item;
+import byui.cit260.ldsScriptureGame.enums.SceneGroup;
+import byui.cit260.ldsScriptureGame.enums.SceneType;
+import byui.cit260.ldsScriptureGame.enums.Direction;
 import byui.cit260.ldsScriptureGame.model.Game;
 import byui.cit260.ldsScriptureGame.model.InventoryItem;
 import byui.cit260.ldsScriptureGame.model.Location;
 import byui.cit260.ldsScriptureGame.model.Map;
 import byui.cit260.ldsScriptureGame.model.Scene;
-import byui.cit260.ldsScriptureGame.enums.SceneType;
 import byui.cit260.ldsScriptureGame.model.ResourceScene;
 import byui.cit260.ldsScriptureGame.exceptions.MapControlException;
 import java.awt.Point;
+import java.awt.image.BufferedImage;
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import lds.scripture.game.team.LDSScriptureGameTeam;
@@ -141,6 +145,93 @@ public class MapControl {
         }
         
     }
+    public static Point moveActor(Character character, Direction direction, int distance) 
+                            throws MapControlException {
+        
+        Point blockedLocation = null;
+        
+        if (character == null  || direction == null  || distance < 1) {
+            throw new InvalidParameterException("character, direction or distance is invalid");
+        }
+        
+        Game game = LDSScriptureGameTeam.getCurrentGame();    
+        Map map = LDSScriptureGameTeam.getCurrentGame().getMap();
+        Point currentPosition = game.getCharactersLocation()[character.ordinal()];
+        Point newPosition = null;
+        
+        if (currentPosition == null) {
+            throw new MapControlException("Character is currently is not assigned "
+                                          + "to a location");
+        }
+        
+        int currentRow = currentPosition.x;
+        int currentColumn = currentPosition.y;
+
+        if (currentRow < 0  || currentRow >= map.getNoOfRows() ||
+            currentColumn < 0  || currentColumn >= map.getNoOfColumns()) {
+            throw new MapControlException("Character is currently in an invalid "
+                                          + "location");
+        }
+        
+        // get new position
+        int newRow = currentPosition.x + (direction.getxIncrement() * distance);
+        int newColumn = currentPosition.y + (direction.getyIncrement() * distance);
+        
+                   
+        if (newRow < 0  || newRow >= map.getNoOfRows() ||
+            newColumn < 0  || newColumn >= map.getNoOfColumns()) {
+            throw new MapControlException("Trying to move to a location "
+                                          + "outside bounds of the map");
+        }  
+        
+        
+        // Check to see if the path is blocked
+        boolean blocked = false;
+        Location[][] locations = map.getLocations();
+        
+        int noOfRows = (newRow - currentRow) * direction.getxIncrement();
+        int row = currentRow + direction.getxIncrement();      
+        for (int i = 0; i < noOfRows; i++ ) {
+            locations[row][currentColumn].setVisited(true);
+            
+            if (locations[row][currentColumn].getScene().isBlocked()){   
+                blocked = true;
+                newRow = row - direction.getxIncrement();
+                blockedLocation = new Point(row+1, currentColumn+1);
+                break;
+            }
+            
+            row += direction.getxIncrement();
+        }
+        
+        
+        int noOfColumns = (newColumn - currentColumn) * direction.getyIncrement();
+        int column = currentColumn + direction.getyIncrement();       
+        for (int i = 0; i < noOfColumns; i++ ) {
+            locations[currentRow][column].setVisited(true);
+
+            if (locations[currentRow][column].getScene().isBlocked()){ 
+                blocked = true;
+                newColumn = column - direction.getyIncrement();
+                blockedLocation = new Point(currentRow+1, column+1);
+                break;
+            }  
+            column += direction.getyIncrement();
+        } 
+        
+        
+        if (currentRow != newRow || currentColumn != newColumn) {
+            Location currentLocation = map.getLocations()[currentRow][currentColumn];
+            currentLocation.removeCharacter(character); // remove actor from old location
+
+            // set actor to new location
+            newPosition = new Point(newRow, newColumn);
+            MapControl.moveCharacterToLocation(game, character, newPosition);
+        }
+
+        
+        return blockedLocation;
+    }    
     
     public static Location getLocation(Point coordinates) {
         return LDSScriptureGameTeam.getCurrentGame().getMap().getLocations()[coordinates.x-1][coordinates.y-1];

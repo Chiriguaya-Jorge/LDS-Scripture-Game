@@ -189,6 +189,71 @@ public class GameMenuView extends View {
         
     }
     
+    public void viewMap(PrintWriter out) {
+        int lineLength = 0;
+        
+        // get the map for the game
+        Location[][] locations = GameControl.getMapLocations();
+        int noColumns = locations[0].length; // get number columns in row
+        
+        this.printTitle(out, noColumns, "THE LAND OF BOUNTIFUL");
+        this.printColumnHeaders(out, noColumns);
+        
+        for (int i = 0; i < locations.length; i++) {    
+            Location[] rowLocations = locations[i];
+            this.printRowDivider(out, noColumns);
+            out.println(); // move down one i
+            if (i < 9)
+                out.print(" " + (i+1));
+            else 
+                out.print(i+1);
+            
+            // for every column in the row
+            for (int column = 0; column < noColumns; column++) {
+                out.print("|"); // print column divider
+                Location location = rowLocations[column];
+                if (location != null && location.isVisited()) { // if location is visited 
+                    
+                    Scene scene = location.getScene();
+                    if (scene != null)
+                        out.print(scene.getMapSymbol());
+                    else
+                        out.print("    ");
+                }
+                else {
+                    out.print(" ?? ");
+                }      
+            }
+            
+            out.print("|"); // print column divider
+        }
+        
+        this.printRowDivider(out, noColumns);
+    }  
+    
+    private void viewInventory(PrintWriter out) {
+        // get the sorted list of inventory items for the current game
+        InventoryItem[] inventory = GameControl.getSortedInventoryList();
+        
+        out.println("\n        LIST OF INVENTORY ITEMS");
+        StringBuilder line = new StringBuilder("                                                          ");
+        line.insert(0, "DESCRIPTION"); 
+        line.insert(20, "REQUIRED");
+        line.insert(30, "IN STOCK");
+        out.println(line.toString());
+        
+        // for each inventory item
+        for (InventoryItem inventoryItem : inventory) {
+            line = new StringBuilder("                                                          ");
+            line.insert(0, inventoryItem.getDescription());
+            line.insert(23, inventoryItem.getRequiredAmount());
+            line.insert(33, inventoryItem.getQuantityInStock());
+            
+            // DISPLAY the description, the required amount and amount in stock
+            out.println(line.toString());
+        }   
+    }
+    
     private void viewCharacters() {
         System.out.println("*** viewCharacters stub function called ***");       
     }
@@ -306,4 +371,38 @@ public class GameMenuView extends View {
         }
 
     }
+    private void printColumnHeaders(PrintWriter out, int noOfColumns) {
+        for (int i = 1; i < noOfColumns+1; i++) {
+            if (i < 10) {
+                out.print("   " + i + " ");
+            }
+            else {
+                out.print("  " + i + " ");
+            }
+        }
+    }
+
+    private void printRowDivider(PrintWriter out, int noColumns) {
+        out.println();
+        out.print("  ");
+        for (int i = 0; i < noColumns; i++) { // print row divider
+                out.print("-----");
+        }
+        out.print("-");
+    }
+
+    private void printTitle(PrintWriter out, int noOfColumns, String title) {
+        
+        int titleLength = title.length();
+        int lineLength = noOfColumns * 5 + 3;
+        int startPosition = (lineLength / 2) - (titleLength / 2);
+        out.println("\n");
+        for (int i = 0; i < startPosition; i++) {
+            out.print(" ");  
+        }
+        out.print(title);
+        out.println("\n");
+        
+    }
+    
 }

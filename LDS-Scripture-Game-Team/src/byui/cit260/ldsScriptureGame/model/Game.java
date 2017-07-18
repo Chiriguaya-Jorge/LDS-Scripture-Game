@@ -9,6 +9,7 @@ import java.io.Serializable;
 
 import lds.scripture.game.team.LDSScriptureGameTeam;
 import java.awt.Point;
+import byui.cit260.ldsScriptureGame.enums.Character;
 
 /**
  *
